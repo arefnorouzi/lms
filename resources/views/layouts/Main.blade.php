@@ -32,6 +32,66 @@
 </header>
 <!--End Header -->
 
+<!-- Start Auth Modal -->
+<div class="popup-modal1">
+    <div class="modal" id="auth-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="common-heading">
+                        <h5 class="mt0 mb0 text-danger">عضویت / ورود به حساب کاربری</h5>
+                    </div>
+                    <button class="closes" data-bs-dismiss="modal" type="button">
+                        ×
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-block fdgn2 mb10" style="overflow: inherit;">
+                        <form action="#" method="post" name="feedback-form">
+                            <ol class="auth-ul">
+                                <li>شماره موبایل خود را <strong class="text-danger">بصورت 11 رقمی</strong> وارد نمایید</li>
+                                <li>سپس دکمه <strong class="text-danger">دریافت کد تایید</strong> را لمس نمایید</li>
+                                <li>کد تایید برای شما پیامک خواهد شد.</li>
+                                <li>پس از وارد کردن کد تایید، دکمه تایید کد را لمس نمایید</li>
+                            </ol>
+                            <div class="fieldsets row">
+                                <div class="col-md-12">
+                                    <input name="mobile" placeholder="موبایل (11 رقمی بصورت لاتین)" type="text"
+                                           minlength="11" maxlength="11" required/>
+                                </div>
+                            </div>
+                            <div class="fieldsets">
+                                <button class="bg-btn5 smllbtnn lnk">
+                                    دریافت کد تایید
+                                    <i class="fas fa-comment">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="fieldsets mt-5">
+                                <div class="col-md-12">
+                                    <input name="verify_code" min="10000" max="500000" placeholder="کد فعالسازی دریافتی را وارد نمایید" type="number"/>
+                                </div>
+                            </div>
+                            <div class="fieldsets mt-2">
+                                <button class="smllbtnn bg-btn3 lnk" type="button">تایید کد</button>
+                            </div>
+                        </form>
+                        <hr class="my-4" />
+                        <div class="text-center">
+                            <a class="btn-outline lnk" href="#">
+                                <img src="/icons/google.svg" class="img-fluid ml-2" width="15" alt="" />
+                                ورود با گوگل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Auth Modal -->
+
 @yield('content')
 
 <!--Start Footer-->

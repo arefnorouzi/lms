@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
         $model = Product::first();
         if (!$model)
         {
-            Product::factory()->count(123)->create();
+            Product::factory()->count(21)->create();
         }
     }
 }

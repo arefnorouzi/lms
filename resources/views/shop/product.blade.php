@@ -92,20 +92,6 @@
                             <div class="bread-title">
                                 <h2>{{$product->name}}</h2>
                                 <p class="mt10">{{$product->subtitle}}</p>
-                                <div class="btn-grp mt40">
-                                    <a class="btn-main bg-btn lnk" href="#">
-                                        پیش نمایش زنده
-                                        <i class="fas fa-share">
-                                        </i>
-                                        <span class="circle"></span>
-                                    </a>
-                                    <a class="btn-main bg-btn3 lnk" href="#">
-                                        هم اکنون خریداری کنید
-                                        <i class="fas fa-shopping-cart">
-                                        </i>
-                                        <span class="circle"></span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,316 +113,164 @@
                             <ul class="nav nav-tabs" id="myTab3" role="tablist">
                                 <li class="nav-item">
                                     <a aria-controls="tab1" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#tab1" id="tab1a" role="tab">
-                                        جزئیات مورد
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a aria-controls="tab2" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab2" id="tab2b" role="tab">
-                                        بررسی ها
+                                        جزئیات
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a aria-controls="tab3" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab3" id="tab3c" role="tab">
-                                        نظر
+                                        نظرات
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a aria-controls="tab4" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab4" id="tab4c" role="tab">
-                                        پشتیبانی
+                                        خرید اقساطی
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent2">
                                 <div aria-labelledby="tab1a" class="mt20 tab-pane fade show active" id="tab1" role="tabpanel">
                                     <h4 class="mb10">
-                                        توضیحات
+                                        {{$product->subtitle ?? $product->name}}
                                     </h4>
-                                    <p class="mb30">
-                                        لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد. لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. به سادگی متن ساختگی صنعت چاپ و حروف چینی است.
-                                    </p>
-                                    <h4 class="mb10">
-                                        24-ساعت پشتیبانی :
-                                    </h4>
-                                    <ul class="ul-list mb30">
-                                        <li>
-                                            پشتیبانی سریع، اختصاصی و حرفه ای
-                                        </li>
-                                        <li>
-                                            لطفا با درخواست جزئیات خود به آدرس info@site.ir ایمیل بزنید. با تشکر!
-                                        </li>
-                                    </ul>
-                                    <h4 class="mb10">
-                                        ویژگی های قالب
-                                    </h4>
-                                    <ul class="ul-list mb30">
-                                        <li>
-                                            ارائه شده توسط بوت استرپ
-                                        </li>
-                                        <li>
-                                            کدهای به خوبی مستند شده
-                                        </li>
-                                        <li>
-                                            کاملا واکنشگرا
-                                        </li>
-                                        <li>
-                                            فونت های رایگان گوگل
-                                        </li>
-                                        <li>
-                                            owl carousel 2
-                                        </li>
-                                        <li>
-                                            آیکون فونت آوسام
-                                        </li>
-                                        <li>
-                                            پاپ‌آپ Magnific
-                                        </li>
-                                        <li>
-                                            فرم تماس با پی‌اچ‌پی به همراه اعتبارسنجی
-                                        </li>
-                                        <li>
-                                            اثر ذرات خانگی
-                                        </li>
-                                        <li>
-                                            کد html و css معتبر W3C
-                                        </li>
-                                        <li>
-                                            سازگار با مرورگرهای مختلف
-                                        </li>
-                                        <li>
-                                            بروزرسانی رایگان
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div aria-labelledby="tab2b" class="tab-pane fade" id="tab2" role="tabpanel">
-                                    <div class="rpb-item-review">
-                                        <div class="reviews-card">
-                                            <div class="review-text pt0 pb20">
-                                                <p>
-                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد.
-                                                </p>
-                                            </div>
-                                            <div class="-client-details-">
-                                                <div class="-reviewr">
-                                                    <img alt="نظر خوب" class="img-fluid" src="images/client/reviewer-c.jpg"/>
-                                                </div>
-                                                <div class="reviewer-text">
-                                                    <h4>
-                                                        <small>
-                                                            توسط:
-                                                        </small>
-                                                        آنا استزیا
-                                                    </h4>
-                                                    <p>
-                                                        20  دی  1400
-                                                    </p>
-                                                    <div class="star-rate">
-                                                        <ul>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="reviews-card">
-                                            <div class="review-text pt0 pb20">
-                                                <p>
-                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد.
-                                                </p>
-                                            </div>
-                                            <div class="-client-details-">
-                                                <div class="-reviewr">
-                                                    <img alt="نظر خوب" class="img-fluid" src="images/client/reviewer-c.jpg"/>
-                                                </div>
-                                                <div class="reviewer-text">
-                                                    <h4>
-                                                        <small>
-                                                            توسط:
-                                                        </small>
-                                                        آنا استزیا
-                                                    </h4>
-                                                    <p>
-                                                        20  دی  1400
-                                                    </p>
-                                                    <div class="star-rate">
-                                                        <ul>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="chked" href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="javascript:void(0)">
-                                                                    <i aria-hidden="true" class="fas fa-star">
-                                                                    </i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="mb30 product-description">
+                                        {!! $product->description !!}
                                     </div>
+
                                 </div>
                                 <div aria-labelledby="tab3c" class="tab-pane fade" id="tab3" role="tabpanel">
                                     <div class="rpb-commentss comments-block">
+                                        @foreach($product->comments as $comment)
                                         <div class="media">
                                             <div class="user-image">
-                                                <img alt="دختر" class="img-fluid" src="images/user-thumb/user3.jpg"/>
+                                                <img alt="{{$comment->user->nick_name ?? $comment->user->name}}"
+                                                     class="img-fluid" src="{{$comment->user->avatar}}"/>
                                             </div>
                                             <div class="media-body user-info">
                                                 <h5 class="mb10">
-                                                    پیتی کروزر
+                                                    {{$comment->user->nick_name ?? $comment->user->name}}
                                                     <small class="badges badge-success">
-                                                        خریدار:
+                                                        @if($comment->user->hasRole('teacher'))
+                                                            (کارشناس پشتیبان)
+                                                        @else
+                                                        (دانشجو)
+                                                        @endif
+
                                                     </small>
                                                     <span>
-                               آذر 1398
-                              <a class="reply-btn" href="#">
-                                <i class="fas fa-reply">
-                                </i>
-                              </a>
-                            </span>
+                                                       {{verta($comment->created_at)->format('Y-m-d')}}
+                                                      <a class="reply-btn" href="#">
+                                                        <i class="fas fa-reply">
+                                                        </i>
+                                                      </a>
+                                                    </span>
                                                 </h5>
-                                                <p>
-                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از سال 1500 متن ساختگی استاندارد صنعت بوده است.
-                                                </p>
+                                                <p>{{$comment->content}}</p>
                                             </div>
                                         </div>
-                                        <div class="media replied">
-                                            <div class="user-image">
-                                                <img alt="دختر" class="img-fluid" src="images/user-thumb/user3.jpg"/>
+                                            @foreach($comment->replies as $reply)
+                                                <div class="media replied">
+                                                <div class="user-image">
+                                                    <img alt="{{$reply->user->nick_name ?? $reply->user->name}}"
+                                                         class="img-fluid" src="{{$reply->user->avatar}}"/>
+                                                </div>
+                                                <div class="media-body user-info">
+                                                    <h5 class="mb10">
+                                                        {{$reply->user->nick_name ?? $reply->user->name}}
+                                                        <small class="badges badge-success">
+                                                            @if($reply->user->hasRole('teacher'))
+                                                                (کارشناس پشتیبان)
+                                                            @else
+                                                                (دانشجو)
+                                                            @endif
+                                                        </small>
+                                                        <span>
+                                                           {{verta($reply->created_at)->format('Y-m-d')}}
+                                                          <a class="reply-btn" href="#">
+                                                            <i class="fas fa-reply">
+                                                            </i>
+                                                          </a>
+                                                        </span>
+                                                    </h5>
+                                                    <p>{!! $reply->content !!}</p>
+                                                </div>
                                             </div>
-                                            <div class="media-body user-info">
-                                                <h5 class="mb10">
-                                                    تام مایکی
-                                                    <small class="badges badge-success">
-                                                        نویسنده:
-                                                    </small>
-                                                    <span>
-                               آذر 1398
-                              <a class="reply-btn" href="#">
-                                <i class="fas fa-reply">
-                                </i>
-                              </a>
-                            </span>
-                                                </h5>
-                                                <p>
-                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم متن ساختگی استاندارد این صنعت بوده است.
-                                                </p>
-                                            </div>
-                                        </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
-                                    <div class="rpb-comment-form">
+                                    @auth
+                                    <div class="rpb-comment-form mb-5">
                                         <div class="form-block form-blog mt40">
                                             <form action="#" method="post" name="#">
-                                                <div class="fieldsets row">
-                                                    <div class="col-md-6">
-                                                        <input name="#" placeholder="نام" type="text"/>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input name="#" placeholder="پست الکترونیک " type="email"/>
-                                                    </div>
+                                                <div class="fieldsets">
+                                                    <label class="form-label">پاسخ به</label>
+                                                    <select name="parent_id" class="form-control">
+                                                        <option value="{{null}}">{{$product->name}}</option>
+                                                        @foreach($product->comments as $comment)
+                                                            <option value="{{$comment->id}}">{{strlen($comment->content) > 70 ? substr($comment->content, 0, 70) . '...' : $comment->content}}</option>
+                                                            @foreach($comment->replies as $reply)
+                                                                <option value="{{$reply->id}}" style="padding-right: 1rem">{{strlen($reply->content) > 70 ? substr($reply->content, 0, 70). '...' : $reply->content}}</option>
+                                                            @endforeach
+                                                        @endforeach
+                                                    </select>
+
                                                 </div>
                                                 <div class="fieldsets">
-                                                    <textarea name="#" placeholder="نظر خود را بنویسید"></textarea>
+                                                    <textarea name="description" minlength="2" maxlength="250" placeholder="نظر خود را بنویسید" required></textarea>
                                                 </div>
                                                 <div class="fieldsets mt10">
-                                                    <button class="btn-main bg-btn3 lnk" name="#" type="submit">
+                                                    <button class="btn-main bg-btn3 lnk" type="submit">
                                                         ارسال پیام
                                                         <i class="fas fa-chevron-left fa-icon">
                                                         </i>
-                                                        <span class="circle">
-                              </span>
+                                                        <span class="circle"></span>
                                                     </button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
+                                    @endauth
                                 </div>
                                 <div aria-labelledby="tab4c" class="tab-pane fade" id="tab4" role="tabpanel">
-                                    <div class="rpb-itm-support-txt">
-                                        <h4>
-                                            تماس با ما
-                                        </h4>
-                                        <p>
-                                            لورم ایپسوم به سادگی متن ساختگی چاپ و از طریق فرم تماس با پست الکترونیک است.
-                                        </p>
-                                        <h4 class="mt30 mb10">
-                                            پشتیبانی آیتم شامل:
-                                        </h4>
-                                        <ul class="ul-list mb30">
-                                            <li>
-                                                ارائه شده توسط بوت استرپ
-                                            </li>
-                                            <li>
-                                                کدهای به خوبی مستند شده
-                                            </li>
-                                            <li>
-                                                کاملا واکنشگرا
-                                            </li>
-                                            <li>
-                                                فونت های رایگان گوگل
-                                            </li>
-                                        </ul>
-                                        <a href="#">
-                                            سیاست پشتیبانی را مشاهده کنید
-                                        </a>
+                                    <div class="rpb-itm-support-txt mb-5">
+                                        <h4>روش های سفارش دوره</h4>
+                                        <p>شما عزیزان می توانید به دو روش نقد یا قسطی دوره ها را تهیه نمایید</p>
+                                        <h5 class="mt30 mb10">خرید نقدی</h5>
+                                        <p>برای خرید نقدی می توانید از دکمه خرید نقدی استفاده نمایید و سفارش خود را تکمیل نمایید و هزینه را بصورت آنلاین پرداخت نمایید</p>
+
+                                        <h4 class="mt30 mb10">خرید قسطی</h4>
+                                        <p>خرید قسطی تنها برای <strong class="text-danger">دوره های بالای 500 هزار تومان</strong> فعال می باشد</p>
+
+
                                         <div class="btns">
-                                            <a class="mt30 btn-main bg-btn3 lnk" href="#">
-                                                دریافت پشتیبانی
+                                            <button type="button" class="mt30 btn-main bg-btn lnk" href="#">
+                                                خرید نقدی
+                                                @if($product->offer_price && $product->offer_end_date > $today)
+                                                    <span>({{number_format($product->offer_price)}})</span>
+                                                @else
+                                                    <span>({{number_format($product->price)}})</span>
+
+                                                @endif
+
                                                 <i class="fas fa-chevron-left fa-icon">
                                                 </i>
-                                                <span class="circle">
-                          </span>
-                                            </a>
+                                                <span class="circle"></span>
+                                            </button>
+                                            @if($product->price > 500000)
+                                            <button type="button" class="mt-3 btn-main bg-btn3 lnk">
+                                                خرید قسطی
+                                                @if($product->offer_price && $product->offer_end_date > $today)
+                                                    <span>({{number_format(intval($product->offer_price * 1.1))}})</span>
+                                                @else
+                                                    <span>({{number_format(intval($product->price * 1.1))}})</span>
+
+                                                @endif
+
+                                                <i class="fas fa-chevron-left fa-icon">
+                                                </i>
+                                                <span class="circle"></span>
+                                            </button>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
@@ -512,21 +346,28 @@
                                 <strong>مدرس دوره</strong>
                                 <div class="nx-rt">{{$product->user->name}}</div>
                             </li>
+                            @guest
+                            <li class="my-5">
+                                <button type="button" data-bs-target="#auth-modal" data-bs-toggle="modal"
+                                        class="btn-main niwax-btn4 w-100">ورود/عضویت</button>
+                            </li>
+                            @endguest
                             <li>
-                                <a class="btn-main bg-btn lnk w-100" href="#">
+                                <button type="button" class="btn-main bg-btn lnk w-100">
                                     افزودن به سبد خرید
                                     <i class="fas fa-shopping-cart">
                                     </i>
-                                    <span class="circle">
-                    </span>
-                                </a>
-                                <a class="btn-main bg-btn3 lnk w-100 mt10" href="#">
-                                    هم اکنون خریداری کنید
-                                    <span class="circle">
-                    </span>
-                                </a>
+                                    <span class="circle"></span>
+                                </button>
+                                <button class="btn-main bg-btn3 lnk w-100 mt10" type="button">
+                                    خرید قسطی دوره
+                                    <span class="circle"></span>
+                                </button>
                             </li>
                         </ul>
+
+
+
                     </div>
                     <div class="rpb-item-infodv">
                         <h5 class="mb20">درباره مدرس</h5>

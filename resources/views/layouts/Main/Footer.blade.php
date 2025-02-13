@@ -1,28 +1,20 @@
 <div class="footer-row1">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-9">
                 <div class="email-subs">
-                    <h3>
-                        اطلاعات جدید را هفتگی دریافت کنید
-                    </h3>
-                    <p>
-                        خبرنامه بسیار مهم است و توسط مشتری دنبال می شود. پست الکترونیک خود را وارد کنید
-                    </p>
+                    <h3>اطلاع از آخرین اخبار و تخفیف ها</h3>
+                    <p>با دنبال کردن ما در اینستاگرام، از آخرین اخبار و تخفیفات باخیر شوید!</p>
                 </div>
             </div>
-            <div class="col-lg-6 v-center">
+            <div class="col-lg-3 v-center">
                 <div class="email-subs-form">
-                    <form>
-                        <input name="emails" placeholder="پست الکترونیک خود را کنید" type="email"/>
-                        <button class="lnk btn-main bg-btn" name="submit" type="submit">
-                            مشترک شدن
-                            <i class="fas fa-chevron-left fa-icon">
-                            </i>
-                            <span class="circle">
+                    <a class="lnk btn-main bg-btn" target="_blank" href="https://instagram.com/caspiweb_ir">
+                        دنبال کردن
+                        <i class="fab fa-instagram fa-icon" style="font-size: 18px;"></i>
+                        <span class="circle">
                     </span>
-                        </button>
-                    </form>
+                    </a>
                 </div>
             </div>
         </div>
@@ -33,10 +25,10 @@
         <div class="row justify-content-between">
             <div class="col-lg-3 col-sm-6 ftr-brand-pp">
                 <a class="navbar-brand mt30 mb25 f-dark-logo" href="#">
-                    <img alt="لوگو" src="images/logo.png"/>
+                    <img alt="لوگو" src="/images/logo.png"/>
                 </a>
                 <a class="navbar-brand mt30 mb25 f-white-logo" href="#">
-                    <img alt="لوگو" src="images/white-logo.png"/>
+                    <img alt="لوگو" src="/images/white-logo.png"/>
                 </a>
                 <p>
                     خبرنامه بسیار مهم است و توسط مشتری دنبال می شود. پست الکترونیک خود را وارد کنید
@@ -140,7 +132,7 @@
                 <div class="single-blog-">
                     <div class="post-thumb">
                         <a href="#">
-                            <img alt=" وبلاگ " src="images/blog/blog-small.jpg"/>
+                            <img alt=" وبلاگ " src="/images/blog/blog-small.jpg"/>
                         </a>
                     </div>
                     <div class="content">
@@ -161,7 +153,7 @@
                 <div class="single-blog-">
                     <div class="post-thumb">
                         <a href="#">
-                            <img alt=" وبلاگ " src="images/blog/blog-small.jpg"/>
+                            <img alt=" وبلاگ " src="/images/blog/blog-small.jpg"/>
                         </a>
                     </div>
                     <div class="content">
@@ -198,22 +190,22 @@
                 <ul class="footer-badges-">
                     <li>
                         <a href="#">
-                            <img alt="نشان ها" src="images/about/badges-a.png"/>
+                            <img alt="نشان ها" src="/images/about/badges-a.png"/>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img alt="نشان ها" src="images/about/badges-b.png"/>
+                            <img alt="نشان ها" src="/images/about/badges-b.png"/>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img alt="نشان ها" src="images/about/badges-c.png"/>
+                            <img alt="نشان ها" src="/images/about/badges-c.png"/>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img alt="نشان ها" src="images/about/badges-d.png"/>
+                            <img alt="نشان ها" src="/images/about/badges-d.png"/>
                         </a>
                     </li>
                 </ul>
@@ -266,10 +258,7 @@
                     </div>
                     <div class="footer-">
                         <p>
-                            ©  1399 - 1401 .کلیه حقوق این سایت متعلق است به
-                            <a href="https://www.rtl-theme.com/author/navidyaghoobi/products/" target="blank">
-                                راست‌چین
-                            </a>
+                            © کلیه حقوق مادی و معنوی نزد مارلیک افزار کاسپین محفوظ است
                         </p>
                     </div>
                 </div>

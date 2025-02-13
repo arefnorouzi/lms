@@ -125,3 +125,17 @@ div[class^="bg-gradient"]>h4 {
 .author-social{
     width: 75px!important;
 }
+
+.product-description {
+    line-height: 1.8rem;
+}
+
+
+.comments-block .user-info h5{
+    font-size: 17px;
+}
+
+.auth-ul li {
+    margin-bottom: .7rem;
+    font-size: .9rem;
+}

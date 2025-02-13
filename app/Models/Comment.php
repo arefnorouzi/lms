@@ -32,8 +32,9 @@ class Comment extends Model
         return $this->hasOne(Comment::class, 'parent_id');
     }
 
-    public function children(): HasMany
+    public function replies(): HasMany
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id')
+            ->with('replies');
     }
 }

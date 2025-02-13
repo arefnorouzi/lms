@@ -64,7 +64,12 @@ class ShopController extends Controller
             return redirect('/shop');
         }
         $product->load(['category:id,name,slug', 'properties']);
-        $today =today()->format('Y-m-d');
+        $product->load(['comments' => function ($query) {
+            $query->orderby('id', 'desc')->where('status', 1)
+                ->whereNull('parent_id')->with('replies')
+                ->paginate(5);
+        }]);
+        $today = today()->format('Y-m-d');
         try {
             $related_products = $this->productRepository->related_products($product->category_id, $product->id);
         }

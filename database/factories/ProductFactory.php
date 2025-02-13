@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -34,7 +35,7 @@ class ProductFactory extends Factory
         $image_rand = rand(1, 3);
         return [
             'name' => $name,
-            'subtitle' => 'محصول بهداشتی ' . $name,
+            'subtitle' => 'آموزش پروژه محور ' . $name,
             'slug' => Str::slug($name),
             'price' => $price,
             'offer_price' => $offer_price,

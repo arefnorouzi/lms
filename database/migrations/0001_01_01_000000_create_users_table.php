@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('telegram', 100)->nullable();
             $table->string('instagram', 100)->nullable();
             $table->string('website', 100)->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->nullable()->default('/icons/profile.png');
             $table->string('google_id')->nullable();
             $table->string('oauth_id')->nullable();
             $table->string('referral_code',15)->nullable();
