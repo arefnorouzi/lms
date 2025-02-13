@@ -5,7 +5,8 @@
         <div class="single-blog-post- shdo">
             <div class="single-blog-img-">
                 <a href="/shop/product/{{$product->sku}}" target="_blank">
-                    <img alt="{{$product->name}}" class="img-fluid" src="/images/blog/blog-dg-1.jpg"/>
+                    <img alt="{{$product->subtitle ?? $product->name}}" class="img-fluid"
+                         src="{{$product->image}}"/>
                 </a>
                 <div class="entry-blog-post @if($color_status) bg-gradient12 @else dg-bg2 @endif">
                               <span class="bypost-">

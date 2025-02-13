@@ -1,6 +1,7 @@
 @extends('layouts.Main')
 @section('title', $product->name)
 @section('header')
+
     <meta name="description" content="{{$product->meta}}">
     {{-- Open Graph (Facebook, WhatsApp) --}}
     <meta property="og:title" content="{{ $product->subtitle ?? $product->name }}">
@@ -119,7 +120,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="rpb-shop-prevw">
-                        <img alt="تصویر" class="w-100" src="/images/shop/item-perview.jpg"/>
+                        <img alt="{{$product->subtitle ?? $product->name}}" class="w-100" src="{{$product->image}}"/>
                     </div>
                     <div class="rpb-item-info">
                         <div class="tab-17 tabs-layout">
@@ -493,7 +494,7 @@
                                 <strong>
                                     پشتیبانی
                                 </strong>
-                                <div class="nx-rt">پشتیبانی رایگان توسط مدرس</div>
+                                <div class="nx-rt">پشتیبانی توسط مدرس</div>
                             </li>
                             <li>
                                 <strong>تعداد جلسات</strong>
@@ -528,46 +529,33 @@
                         </ul>
                     </div>
                     <div class="rpb-item-infodv">
-                        <h4 class="mb20">
-                            برچسب های آیتم
-                        </h4>
-                        <div class="tabs">
-                            <a href="#">
-                                طراحی وب
-                            </a>
-                            <a href="#">
-                                طرح
-                            </a>
-                            <a href="#">
-                                طراحی گرافیک
-                            </a>
-                            <a href="#">
-                                سایت اینترنتی
-                            </a>
-                            <a href="#">
-                                بازاریابی
-                            </a>
-                            <a href="#">
-                                برندسازی
-                            </a>
-                            <a href="#">
-                                توسعه وب
-                            </a>
-                            <a href="#">
-                                طراح وب
-                            </a>
-                            <a href="#">
-                                طراحی گرافیک
-                            </a>
-                            <a href="#">
-                                سایت اینترنتی
-                            </a>
-                            <a href="#">
-                                بازاریابی
-                            </a>
-                            <a href="#">
-                                برندسازی
-                            </a>
+                        <h5 class="mb20">درباره مدرس</h5>
+                        <div class="about-teacher">
+                            <h6>{{$product->user->name}}</h6>
+                            <p>{{$product->user->bio}}</p>
+                            <div class="project-platform mt60 pl25">
+                                @if($product->user->whatsapp)
+                                <div class="project-platform-used -shadow">
+                                    <a href="{{$product->user->whatsapp}}" target="_blank">
+                                        <img class="author-social" alt="واتساپ" src="/icons/whatsapp.svg"/>
+                                    </a>
+                                </div>
+                                @endif
+                                @if($product->user->telegram)
+                                <div class="project-platform-used -shadow">
+                                    <a href="{{$product->user->telegram}}" target="_blank">
+                                        <img class="author-social" alt="تلگرام" src="/icons/telegram.svg"/>
+                                    </a>
+                                </div>
+                                @endif
+                                @if($product->user->instagram)
+                                    <div class="project-platform-used -shadow">
+                                        <a href="{{$product->user->instagram}}" target="_blank">
+                                            <img class="author-social" alt="اینستاگرام" src="/icons/instagram.svg"/>
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -121,3 +121,7 @@ div[class^="bg-gradient"]>h4 {
 .pager li span {
     padding: 10px;
 }
+
+.author-social{
+    width: 75px!important;
+}

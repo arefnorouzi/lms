@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nick_name', 20)->nullable();
             $table->string('username', 50)->nullable();
             $table->string('mobile', 11)->nullable();
-            $table->string('email')->unique();
+            $table->string('email', 70)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('mobile_verified')->default(false);
             $table->string('password')->nullable();
@@ -25,6 +25,11 @@ return new class extends Migration
             $table->string('phone', 30)->nullable();
             $table->string('national_code', 100)->nullable();
             $table->string('bio')->nullable();
+            $table->string('work_mail', 50)->nullable();
+            $table->string('whatsapp', 50)->nullable();
+            $table->string('telegram', 100)->nullable();
+            $table->string('instagram', 100)->nullable();
+            $table->string('website', 100)->nullable();
             $table->string('avatar')->nullable();
             $table->string('google_id')->nullable();
             $table->string('oauth_id')->nullable();

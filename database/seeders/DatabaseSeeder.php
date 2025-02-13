@@ -27,7 +27,12 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'national_code' => '2670213359',
             'phone' => '01344305892',
-            'bio' => 'برنامه نویس وب'
+            'bio' => 'برنامه نویس وب',
+            'website' => 'https://caspiweb.ir',
+            'work_mail' => 'arefnorouzi1374@gmail.com',
+            'whatsapp' => 'https://wa.me/+989192138510',
+            'instagram' => 'https://instagram.com/aref_norouzi_dev',
+            'telegram' => 'https://t.me/caspiweb_ir',
         ]);
 
 
