@@ -2,8 +2,8 @@
     <div class="menu-header">
         <div class="dsk-logo">
             <a class="nav-brand" href="./">
-                <img alt="لوگو" class="mega-white-logo" src="images/white-logo.png"/>
-                <img alt="لوگو" class="mega-darks-logo" src="images/logo.png"/>
+                <img alt="لوگو" class="mega-white-logo" src="/images/white-logo.png"/>
+                <img alt="لوگو" class="mega-darks-logo" src="/images/logo.png"/>
             </a>
         </div>
         <div class="custom-nav" role="navigation">

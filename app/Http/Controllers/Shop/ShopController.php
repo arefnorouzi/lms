@@ -63,7 +63,7 @@ class ShopController extends Controller
         {
             return redirect('/shop');
         }
-        $product->load(['category:id,name,slug', 'galleries', 'properties']);
+        $product->load(['category:id,name,slug', 'properties']);
         $today =today()->format('Y-m-d');
         try {
             $related_products = $this->productRepository->related_products($product->category_id, $product->id);

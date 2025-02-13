@@ -89,3 +89,35 @@ div[class^="bg-gradient"]>h4 {
 .subtitle{
     font-size: .9rem;
 }
+
+
+
+.pager {
+    display: flex;
+    padding: 0;
+    list-style: none;
+}
+
+.pager .active {
+    background: #c70000;
+}
+
+.pager .disabled {
+    background: #a0aec0;
+}
+
+.pager li {
+    padding: 10px;
+    background: #2a3042;
+    margin: 5px;
+    color: white;
+}
+
+.pager li a {
+    padding: 10px;
+    color: white;
+}
+
+.pager li span {
+    padding: 10px;
+}

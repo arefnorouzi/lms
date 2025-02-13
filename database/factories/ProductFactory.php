@@ -46,9 +46,11 @@ class ProductFactory extends Factory
             'category_id' => rand(1, 9),
             'sku' => $sku,
             'status' => 1,
+            'lisense_status' => rand(0, 1),
             'sales' => rand(5, 860),
             'sessions' => rand(2, 30),
-            'course_time' => str(rand(1, 5) . ':' . rand(1, 6) * 5)
+            'course_time' => str(rand(1, 5) . ':' . rand(1, 6) * 5),
+            'published_at' => now()->subWeeks(rand(1, 30))
         ];
     }
 }

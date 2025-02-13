@@ -9,7 +9,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="product">
     @if($product->offer_price && $product->offer_end_date > $today)
-    <meta property="product:price:amount" content="{{ $product->offer_price * 10 }}">
+        <meta property="product:price:amount" content="{{ $product->offer_price * 10 }}">
     @else
         <meta property="product:price:amount" content="{{ $product->price * 10 }}">
     @endif
@@ -37,10 +37,10 @@
         "@type": "Brand",
         "name": "CLEANOVA"
       },
-      @if($product->offer_price && $product->offer_end_date > $today)
-        "offers": {
-            "@type": "Offer",
-            "url": "{{url("/shop/product/$product->sku")}}",
+        @if($product->offer_price && $product->offer_end_date > $today)
+            "offers": {
+                "@type": "Offer",
+                "url": "{{url("/shop/product/$product->sku")}}",
             "priceCurrency": "IRR",
             "price": "{{intval($product->price * 10)}}",
             "priceValidUntil": "{{$product->offer_end_time}}",
@@ -59,223 +59,517 @@
             "availability": "https://schema.org/InStock"
         }
         @endif
-      }
+        }
     </script>
 @endsection
 @section('content')
 
-    <!-- Product info section -->
-    <section class="product product-info">
-        <div class="container">
-            <!-- Breadcrumb -->
-            <div class="blog-bradcrum">
-                <span><a href="/">خانه</a></span>
-                <span class="devider">/</span>
-                <span><a href="/shop">فروشگاه</a></span>
-                <span class="devider">/</span>
-                <span><a href="#">{{$product->name}}</a></span>
+    <!--Breadcrumb Area-->
+    <section class="breadcrumb-area banner-2" data-background="/images/banner/4.jpg">
+        <div class="text-block">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 v-center">
+                        <div class="bread-inner">
+                            <div class="bread-menu">
+                                <ul>
+                                    <li>
+                                        <a href="/">
+                                            صفحه اصلی
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/shop/category/{{$product->category->slug}}" target="_blank">
+                                            {{$product->category->name}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url()->current()}}">{{$product->name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bread-title">
+                                <h2>{{$product->name}}</h2>
+                                <p class="mt10">{{$product->subtitle}}</p>
+                                <div class="btn-grp mt40">
+                                    <a class="btn-main bg-btn lnk" href="#">
+                                        پیش نمایش زنده
+                                        <i class="fas fa-share">
+                                        </i>
+                                        <span class="circle"></span>
+                                    </a>
+                                    <a class="btn-main bg-btn3 lnk" href="#">
+                                        هم اکنون خریداری کنید
+                                        <i class="fas fa-shopping-cart">
+                                        </i>
+                                        <span class="circle"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product-info-section">
-                <div class="row ">
-                    <div class="col-md-6">
-                        <!-- Gallery -->
-                        <div class="product-info-img" data-aos="fade-right">
-                            <div class="swiper product-top">
-                                @if($product->offer_price && $product->offer_end_date > $today)
-                                <div class="product-discount-content">
-                                    <p class="text-black fs-3" dir="ltr">
-                                        %{{round((floatval(($product->price - $product->offer_price) / $product->price) * 100))}}
+        </div>
+    </section>
+    <!--end Breadcrumb Area-->
+    <!--shop products-->
+    <section class="shop-products-prvw pt20 pb60">
+        <div class="container shop-container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="rpb-shop-prevw">
+                        <img alt="تصویر" class="w-100" src="/images/shop/item-perview.jpg"/>
+                    </div>
+                    <div class="rpb-item-info">
+                        <div class="tab-17 tabs-layout">
+                            <ul class="nav nav-tabs" id="myTab3" role="tablist">
+                                <li class="nav-item">
+                                    <a aria-controls="tab1" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#tab1" id="tab1a" role="tab">
+                                        جزئیات مورد
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-controls="tab2" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab2" id="tab2b" role="tab">
+                                        بررسی ها
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-controls="tab3" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab3" id="tab3c" role="tab">
+                                        نظر
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-controls="tab4" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#tab4" id="tab4c" role="tab">
+                                        پشتیبانی
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent2">
+                                <div aria-labelledby="tab1a" class="mt20 tab-pane fade show active" id="tab1" role="tabpanel">
+                                    <h4 class="mb10">
+                                        توضیحات
+                                    </h4>
+                                    <p class="mb30">
+                                        لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد. لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. به سادگی متن ساختگی صنعت چاپ و حروف چینی است.
                                     </p>
+                                    <h4 class="mb10">
+                                        24-ساعت پشتیبانی :
+                                    </h4>
+                                    <ul class="ul-list mb30">
+                                        <li>
+                                            پشتیبانی سریع، اختصاصی و حرفه ای
+                                        </li>
+                                        <li>
+                                            لطفا با درخواست جزئیات خود به آدرس info@site.ir ایمیل بزنید. با تشکر!
+                                        </li>
+                                    </ul>
+                                    <h4 class="mb10">
+                                        ویژگی های قالب
+                                    </h4>
+                                    <ul class="ul-list mb30">
+                                        <li>
+                                            ارائه شده توسط بوت استرپ
+                                        </li>
+                                        <li>
+                                            کدهای به خوبی مستند شده
+                                        </li>
+                                        <li>
+                                            کاملا واکنشگرا
+                                        </li>
+                                        <li>
+                                            فونت های رایگان گوگل
+                                        </li>
+                                        <li>
+                                            owl carousel 2
+                                        </li>
+                                        <li>
+                                            آیکون فونت آوسام
+                                        </li>
+                                        <li>
+                                            پاپ‌آپ Magnific
+                                        </li>
+                                        <li>
+                                            فرم تماس با پی‌اچ‌پی به همراه اعتبارسنجی
+                                        </li>
+                                        <li>
+                                            اثر ذرات خانگی
+                                        </li>
+                                        <li>
+                                            کد html و css معتبر W3C
+                                        </li>
+                                        <li>
+                                            سازگار با مرورگرهای مختلف
+                                        </li>
+                                        <li>
+                                            بروزرسانی رایگان
+                                        </li>
+                                    </ul>
                                 </div>
-                                @endif
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide slider-top-img">
-                                        <img src="{{$product->image}}" alt="{{$product->name}}">
-                                    </div>
-                                    @foreach($product->galleries as $gallery)
-                                        <div class="swiper-slide slider-top-img">
-                                            <img src="{{$gallery->image}}" alt="{{$product->name}}">
+                                <div aria-labelledby="tab2b" class="tab-pane fade" id="tab2" role="tabpanel">
+                                    <div class="rpb-item-review">
+                                        <div class="reviews-card">
+                                            <div class="review-text pt0 pb20">
+                                                <p>
+                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد.
+                                                </p>
+                                            </div>
+                                            <div class="-client-details-">
+                                                <div class="-reviewr">
+                                                    <img alt="نظر خوب" class="img-fluid" src="images/client/reviewer-c.jpg"/>
+                                                </div>
+                                                <div class="reviewer-text">
+                                                    <h4>
+                                                        <small>
+                                                            توسط:
+                                                        </small>
+                                                        آنا استزیا
+                                                    </h4>
+                                                    <p>
+                                                        20  دی  1400
+                                                    </p>
+                                                    <div class="star-rate">
+                                                        <ul>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    @endforeach
-
+                                        <div class="reviews-card">
+                                            <div class="review-text pt0 pb20">
+                                                <p>
+                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از دهه 1500 به عنوان متن ساختگی استاندارد صنعت بوده است، زمانی که یک چاپگر ناشناخته یک گالری از نوع را برداشت و آن را به هم زد تا یک کتاب نمونه بسازد.
+                                                </p>
+                                            </div>
+                                            <div class="-client-details-">
+                                                <div class="-reviewr">
+                                                    <img alt="نظر خوب" class="img-fluid" src="images/client/reviewer-c.jpg"/>
+                                                </div>
+                                                <div class="reviewer-text">
+                                                    <h4>
+                                                        <small>
+                                                            توسط:
+                                                        </small>
+                                                        آنا استزیا
+                                                    </h4>
+                                                    <p>
+                                                        20  دی  1400
+                                                    </p>
+                                                    <div class="star-rate">
+                                                        <ul>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chked" href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">
+                                                                    <i aria-hidden="true" class="fas fa-star">
+                                                                    </i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper product-bottom">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide slider-bottom-img">
-                                        <img src="{{$product->image}}" alt="{{$product->name}}">
-                                    </div>
-                                    @foreach($product->galleries as $gallery)
-                                        <div class="swiper-slide slider-bottom-img">
-                                            <img src="{{$gallery->image}}" alt="{{$product->subtitle}}">
+                                <div aria-labelledby="tab3c" class="tab-pane fade" id="tab3" role="tabpanel">
+                                    <div class="rpb-commentss comments-block">
+                                        <div class="media">
+                                            <div class="user-image">
+                                                <img alt="دختر" class="img-fluid" src="images/user-thumb/user3.jpg"/>
+                                            </div>
+                                            <div class="media-body user-info">
+                                                <h5 class="mb10">
+                                                    پیتی کروزر
+                                                    <small class="badges badge-success">
+                                                        خریدار:
+                                                    </small>
+                                                    <span>
+                               آذر 1398
+                              <a class="reply-btn" href="#">
+                                <i class="fas fa-reply">
+                                </i>
+                              </a>
+                            </span>
+                                                </h5>
+                                                <p>
+                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم از سال 1500 متن ساختگی استاندارد صنعت بوده است.
+                                                </p>
+                                            </div>
                                         </div>
-                                    @endforeach
+                                        <div class="media replied">
+                                            <div class="user-image">
+                                                <img alt="دختر" class="img-fluid" src="images/user-thumb/user3.jpg"/>
+                                            </div>
+                                            <div class="media-body user-info">
+                                                <h5 class="mb10">
+                                                    تام مایکی
+                                                    <small class="badges badge-success">
+                                                        نویسنده:
+                                                    </small>
+                                                    <span>
+                               آذر 1398
+                              <a class="reply-btn" href="#">
+                                <i class="fas fa-reply">
+                                </i>
+                              </a>
+                            </span>
+                                                </h5>
+                                                <p>
+                                                    لورم ایپسوم به سادگی متن ساختگی صنعت چاپ و حروف چینی است. لورم ایپسوم متن ساختگی استاندارد این صنعت بوده است.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rpb-comment-form">
+                                        <div class="form-block form-blog mt40">
+                                            <form action="#" method="post" name="#">
+                                                <div class="fieldsets row">
+                                                    <div class="col-md-6">
+                                                        <input name="#" placeholder="نام" type="text"/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input name="#" placeholder="پست الکترونیک " type="email"/>
+                                                    </div>
+                                                </div>
+                                                <div class="fieldsets">
+                                                    <textarea name="#" placeholder="نظر خود را بنویسید"></textarea>
+                                                </div>
+                                                <div class="fieldsets mt10">
+                                                    <button class="btn-main bg-btn3 lnk" name="#" type="submit">
+                                                        ارسال پیام
+                                                        <i class="fas fa-chevron-left fa-icon">
+                                                        </i>
+                                                        <span class="circle">
+                              </span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div aria-labelledby="tab4c" class="tab-pane fade" id="tab4" role="tabpanel">
+                                    <div class="rpb-itm-support-txt">
+                                        <h4>
+                                            تماس با ما
+                                        </h4>
+                                        <p>
+                                            لورم ایپسوم به سادگی متن ساختگی چاپ و از طریق فرم تماس با پست الکترونیک است.
+                                        </p>
+                                        <h4 class="mt30 mb10">
+                                            پشتیبانی آیتم شامل:
+                                        </h4>
+                                        <ul class="ul-list mb30">
+                                            <li>
+                                                ارائه شده توسط بوت استرپ
+                                            </li>
+                                            <li>
+                                                کدهای به خوبی مستند شده
+                                            </li>
+                                            <li>
+                                                کاملا واکنشگرا
+                                            </li>
+                                            <li>
+                                                فونت های رایگان گوگل
+                                            </li>
+                                        </ul>
+                                        <a href="#">
+                                            سیاست پشتیبانی را مشاهده کنید
+                                        </a>
+                                        <div class="btns">
+                                            <a class="mt30 btn-main bg-btn3 lnk" href="#">
+                                                دریافت پشتیبانی
+                                                <i class="fas fa-chevron-left fa-icon">
+                                                </i>
+                                                <span class="circle">
+                          </span>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="product-info-content" id="vueapp" data-aos="fade-left">
-                            <h5>{{$product->subtitle}}</h5>
-
-                            <!-- Price -->
-
-                            @if($product->offer_price && $product->offer_end_date > $today)
-                                <div class="price">
-                                    <span class="price-cut">{{number_format($product->price)}}</span>
-                                    <span class="new-price">{{number_format($product->offer_price)}} تومان</span>
-                                </div>
-                            @else
-                                <div class="price">
-                                    <span class="new-price">{{number_format($product->price)}} تومان</span>
-                                </div>
-                            @endif
-                            <!-- Description -->
-                            <hr />
-
-
-                            @if($product->properties)
-
-                            <div class="d-flex flex-wrap overflow-scroll">
-                                @foreach($product->properties as $property)
-                                    <div class="property-item">
-                                        <div class="property-name">{{$property->property_name}}</div>
-                                        <div class="property-value">
-                                            {{$property->property_value}}
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @endif
-                            <hr />
-                            <!-- Abailability -->
-                            @if($product->stock > 1)
-                            <div class="product-availability">
-                                <span>موجودی: </span>
-                                <span class="inner-text">{{$product->stock}} محصول</span>
-                            </div>
-                            <div v-if="message" class="alert alert-success">
-                                <p>@{{ message }}</p>
-                                <br />
-                                <a href="/cart" class="nav-link text-primary font-weight-bold">مشاهده سبد خرید</a>
-                            </div>
-                            <p v-if="error" class="alert alert-danger">@{{ error }}</p>
-                            <!-- Quanity -->
-                            <div class="product-quantity">
-                                <input type="number" min="1" max="{{$product->stock}}"
-                                       class="form-control quantity-input"
-                                       v-model="qty"
-                                       required>
-                                <button class="shop-btn" @click="addToCart()">
-                                    <span>
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.25357 3.32575C8.25357 4.00929 8.25193 4.69283 8.25467 5.37583C8.25576 5.68424 8.31536 5.74439 8.62431 5.74439C9.964 5.74603 11.3031 5.74275 12.6428 5.74603C13.2728 5.74767 13.7397 6.05663 13.9246 6.58104C14.2209 7.42098 13.614 8.24232 12.6762 8.25052C11.5919 8.25982 10.5075 8.25271 9.4232 8.25271C9.17714 8.25271 8.93107 8.25216 8.68501 8.25271C8.2913 8.2538 8.25412 8.29154 8.25412 8.69838C8.25357 10.0195 8.25686 11.3412 8.25248 12.6624C8.25029 13.2836 7.92603 13.7544 7.39891 13.9305C6.56448 14.2088 5.75848 13.6062 5.74863 12.6821C5.73824 11.7251 5.74645 10.7687 5.7459 9.81173C5.7459 9.41965 5.74754 9.02812 5.74535 8.63604C5.74371 8.30849 5.69012 8.2538 5.36204 8.25326C4.02235 8.25162 2.68321 8.25545 1.34352 8.25107C0.719613 8.24943 0.249902 7.93008 0.0710952 7.40348C-0.212153 6.57065 0.388245 5.75916 1.31017 5.74658C2.14843 5.73564 2.98669 5.74384 3.82495 5.74384C4.30779 5.74384 4.79062 5.74384 5.274 5.74384C5.72184 5.7433 5.7459 5.71869 5.7459 5.25716C5.7459 3.95406 5.74317 2.65096 5.74699 1.34786C5.74863 0.720643 6.0625 0.253102 6.58799 0.0704598C7.40875 -0.213893 8.21803 0.370671 8.25248 1.27349C8.25303 1.29154 8.25303 1.31013 8.25303 1.32817C8.25357 1.99531 8.25357 2.66026 8.25357 3.32575Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    <span>اضافه به سبد</span>
-                                </button>
-                            </div>
-                            @else
-                                <div class="product-availability">
-                                    <span class="inner-text">ناموجود</span>
-                                </div>
-
-                            @endif
-                            <hr>
-                            <!-- Details -->
-                            <div class="product-details">
-                                <p class="category">دسته: <span class="inner-text">{{$product->category->name}}</span></p>
-                                <p class="sku">کد محصول: <span class="inner-text">{{$product->id}}</span></p>
-                            </div>
-                            <hr>
-                            <!-- Share -->
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Product description -->
-    <section class="product product-description">
-        <div class="container">
-            <div class="product-detail-section">
-
-                @if($product->properties and count($product->properties))
-                <h3 class="intro-heading properties-title mb-3">ویژگی ها</h3>
-                    <table class="table table-striped table-responsive properties-table">
-                        <tbody>
-                        @foreach($product->properties as $property)
-                            <tr>
-                                <td>{{$property->property_name}}</td>
-                                <td>{{$property->property_value}}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                @endif
-
-                <div class="product-intro-section product-description-content">
-                    <h1 class="product-description-title">{{$product->subtitle}}</h1>
-                    {!! $product->description !!}
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Top selling this week section -->
-    <section class="product weekly-sale product-weekly footer-padding">
-        <div class="container">
-            <div class="section-title">
-                <h5>محصولات مرتبط</h5>
-                <a href="/shop/category/{{$product->category->slug}}" target="_blank" class="view">مشاهده همه</a>
-            </div>
-            <div class="weekly-sale-section">
-                <div class="row g-5">
-                    @foreach($related_products as $p)
-                    <div class="col-lg-3 col-md-6">
-                        <a href="/shop/product/{{$p->sku}}">
-                        <div class="product-wrapper" data-aos="fade-up">
-                            <div class="product-img">
-                                @if($p->thumbnail)
-                                    <img src="{{$p->thumbnail}}" alt="{{$p->name}}">
-                                @elseif($p->image)
-                                    <img src="{{$p->image}}" alt="{{$p->name}}">
-                                @else
-                                    -
-                                @endif
-                            </div>
-                            <div class="product-info">
-                                <div class="product-description">
-                                    <a href="/shop/product/{{$p->sku}}" class="product-details">{{$p->name}}</a>
-                                    @if($p->offer_price && $p->offer_end_date > $today)
-                                        <div class="price">
-                                            <span class="price-cut">{{number_format($p->price)}}</span>
-                                            <span class="new-price">{{number_format($p->offer_price)}}</span>
-                                        </div>
+                <div class="col-lg-4">
+                    <div class="rpb-item-infodv">
+                        <ul>
+                            <li class="price">
+                                <strong>
+                                    قیمت
+                                </strong>
+                                <div class="nx-rt">
+                                    <div class="rpb-itm-pric">
+                                    @if($product->offer_price && $product->offer_end_date > $today)
+                                        <span class="offer-prz">{{number_format($product->offer_price)}}</span>
+                                        <span class="regular-prz">{{number_format($product->price)}}</span>
+                                        <small>تومان</small>
                                     @else
-                                        <div class="price">
-                                            <span class="new-price">{{number_format($p->price)}}</span>
-                                        </div>
+                                        <span class="offer-prz">{{number_format($product->price)}}</span>
+                                        <small>تومان</small>
                                     @endif
-
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-cart-btn">
-                                <a href="/shop/product/{{$p->sku}}" class="product-btn">سفارش محصول</a>
-
-                            </div>
-                        </div>
-                        </a>
+                            </li>
+                            <li>
+                                <strong>
+                                    آخرین بروزرسانی
+                                </strong>
+                                <div class="nx-rt">{{verta($product->updated_at)->format('Y-m-d')}}</div>
+                            </li>
+                            <li>
+                                <strong>انتشار</strong>
+                                <div class="nx-rt">{{verta($product->published_at)->format('Y-m-d')}}</div>
+                            </li>
+                            @if($product->lisense_status)
+                            <li>
+                                <strong>ارایه مدرک</strong>
+                                <div class="nx-rt">
+                                    بله
+                                </div>
+                            </li>
+                            @endif
+                            <li>
+                                <strong>
+                                    سورس کد
+                                </strong>
+                                <div class="nx-rt">
+                                    دارد
+                                </div>
+                            </li>
+                            <li>
+                                <strong>
+                                    پشتیبانی
+                                </strong>
+                                <div class="nx-rt">پشتیبانی رایگان توسط مدرس</div>
+                            </li>
+                            <li>
+                                <strong>تعداد جلسات</strong>
+                                <div class="nx-rt">{{$product->sessions}}</div>
+                            </li>
+                            <li>
+                                <strong>مدت دوره</strong>
+                                <div class="nx-rt">{{$product->course_time}}</div>
+                            </li>
+                            <li>
+                                <strong>تعداد دانشجو</strong>
+                                <div class="nx-rt">{{number_format($product->sales)}}</div>
+                            </li>
+                            <li>
+                                <strong>مدرس دوره</strong>
+                                <div class="nx-rt">{{$product->user->name}}</div>
+                            </li>
+                            <li>
+                                <a class="btn-main bg-btn lnk w-100" href="#">
+                                    افزودن به سبد خرید
+                                    <i class="fas fa-shopping-cart">
+                                    </i>
+                                    <span class="circle">
+                    </span>
+                                </a>
+                                <a class="btn-main bg-btn3 lnk w-100 mt10" href="#">
+                                    هم اکنون خریداری کنید
+                                    <span class="circle">
+                    </span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                        @endforeach
+                    <div class="rpb-item-infodv">
+                        <h4 class="mb20">
+                            برچسب های آیتم
+                        </h4>
+                        <div class="tabs">
+                            <a href="#">
+                                طراحی وب
+                            </a>
+                            <a href="#">
+                                طرح
+                            </a>
+                            <a href="#">
+                                طراحی گرافیک
+                            </a>
+                            <a href="#">
+                                سایت اینترنتی
+                            </a>
+                            <a href="#">
+                                بازاریابی
+                            </a>
+                            <a href="#">
+                                برندسازی
+                            </a>
+                            <a href="#">
+                                توسعه وب
+                            </a>
+                            <a href="#">
+                                طراح وب
+                            </a>
+                            <a href="#">
+                                طراحی گرافیک
+                            </a>
+                            <a href="#">
+                                سایت اینترنتی
+                            </a>
+                            <a href="#">
+                                بازاریابی
+                            </a>
+                            <a href="#">
+                                برندسازی
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
