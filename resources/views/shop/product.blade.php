@@ -101,7 +101,7 @@
     </section>
     <!--end Breadcrumb Area-->
     <!--shop products-->
-    <section class="shop-products-prvw pt20 pb60">
+    <section class="shop-products-prvw pt20 pb60" id="vueapp">
         <div class="container shop-container">
             <div class="row">
                 <div class="col-lg-8">
@@ -351,9 +351,18 @@
                                 <button type="button" data-bs-target="#auth-modal" data-bs-toggle="modal"
                                         class="btn-main niwax-btn4 w-100">ورود/عضویت</button>
                             </li>
+                            @else
+                                <li class="my-2">
+                                    <div v-if="message" class="alert alert-success">
+                                        <p>@{{ message }}</p>
+                                        <br />
+                                        <a href="/cart" class="nav-link text-primary font-weight-bold">مشاهده سبد خرید</a>
+                                    </div>
+                                    <p v-if="error" class="alert alert-danger">@{{ error }}</p>
+                                </li>
                             @endguest
                             <li>
-                                <button type="button" class="btn-main bg-btn lnk w-100">
+                                <button @click="addToCart" type="button" class="btn-main bg-btn lnk w-100">
                                     افزودن به سبد خرید
                                     <i class="fas fa-shopping-cart">
                                     </i>
@@ -414,7 +423,7 @@
             data() {
                 return {
                     qty: 1,
-                    stock: {{$product->stock}},
+                    stock: 1,
                     message: '',
                     error: ''
                 }

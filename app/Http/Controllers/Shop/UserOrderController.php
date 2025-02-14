@@ -57,9 +57,8 @@ class UserOrderController extends Controller
         }
         $user = [
             "name" => auth()->user()->name,
-            "mobile" => auth()->user()->mobile,
-            "address" => auth()->user()->address,
-            "zip_code" => auth()->user()->zip_code,
+            "mobile" => auth()->user()->mobile ?? $order->customer_phone,
+            "email" => auth()->user()->email,
         ];
         return view('order.show', compact(
             'order', 'shipping_methods', 'user'
@@ -79,7 +78,6 @@ class UserOrderController extends Controller
         }
         if ($order)
         {
-            Log::info($order["uuid"]);
             return response()->json(['order_id' => $order["uuid"]], status: 201);
         }
         return response()->json(status: 400);
@@ -108,13 +106,16 @@ class UserOrderController extends Controller
 
         try {
             $user->name = $request['name'];
-            $user->address = $request['address'];
-            $user->zip_code = $request['zip_code'];
+            if (!$user->mobile_verified)
+            {
+                $user->mobile = $request['phone'];
+            }
+            $user->name = $request['name'];
+            $user->email = $request['email'];
             $user->update();
-            $order->customer_address = $request['address'];
             $order->customer_phone = $request['phone'];
-            $order->customer_zip_code = $request['zip_code'];
             $order->customer_name = $request['name'];
+            $order->customer_email = $request['email'];
             $order->shipping_method_id = $shipping_method->id;
             $order->shipping_cost = $shipping_method->price;
             $order->amount = intval($order->total + $shipping_method->price);

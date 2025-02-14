@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('bank_payment_code', 200)->nullable();
             $table->string('post_tracking_code', 200)->nullable();
             $table->string('customer_name', 70)->nullable();
+            $table->string('customer_email', 70)->nullable();
             $table->string('customer_address', 250)->nullable();
             $table->string('customer_zip_code', 10)->nullable();
             $table->string('customer_phone', 30)->nullable();

@@ -41,10 +41,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleSeeder::class,
+            ShippingMethodSeeder::class,
             BrandSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             CommentSeeder::class,
+
 
         ]);
         $admin_role = Role::where('name', 'admin')->first();

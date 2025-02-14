@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/terms',[HomeController::class,'terms'])->name('terms');
-Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 
 
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth');

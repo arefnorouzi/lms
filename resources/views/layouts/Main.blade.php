@@ -2,11 +2,8 @@
 <html class="no-js" dir="rtl" lang="fa">
 <head>
     <meta charset="utf-8"/>
-    <title>
-        نیواکس - قالب html آژانس طراحی وب و دیجیتال مارکتینگ
-    </title>
-    <meta content="Creative Agency, Marketing Agency Template" name="description"/>
-    <meta content="rajesh-doot" name="author"/>
+    <title>@yield('title') | مارلیک افزار</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width,initial-scale=1" name="viewport"/>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <!--website-favicon-->
@@ -109,7 +106,7 @@
 <script src="/js/plugin.min.js">
 </script>
 <!--common script file-->
-<script src="/js/main.js">
-</script>
+<script src="/js/main.js"></script>
+@yield('script')
 </body>
 </html>

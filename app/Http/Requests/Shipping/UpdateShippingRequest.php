@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Order;
+namespace App\Http\Requests\Shipping;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOrderRequest extends FormRequest
+class UpdateShippingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        if (auth()->check())
+        if (auth()->check() && auth()->user()->is_admin)
         {
             return true;
         }
@@ -26,10 +26,9 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'bail|required|string|max:70',
-            'phone' => 'bail|required|string|min:11|max:11',
-            'email' => 'bail|nullable|string|min:12|max:70',
-            'shipping_method' => 'bail|required|integer|min:1|exists:shipping_methods,id',
+            'title' => 'bail|required|string|max:100',
+            'price' => 'bail|required|integer|min:0|max:1000000',
+            'status' => 'bail|required|bool',
         ];
     }
 }
