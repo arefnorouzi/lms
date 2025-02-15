@@ -1,0 +1,11 @@
+@import "bootstrap.min.css";
+@import "admin.css";
+
+td{font-size: .75rem !important;}
+
+@media print {
+    .text-primary {
+        color: blue !important;
+    }
+    text-align: center;
+}
