@@ -37,6 +37,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('sessions')->default(1);
             $table->string('course_time')->nullable();
             $table->string('course_demo')->nullable();
+            $table->string('downloading_file')->nullable(); // txt file include files path
             $table->string('git_repo')->nullable();
             $table->boolean('lisense_status')->default(1);
             $table->boolean('source_status')->default(1);

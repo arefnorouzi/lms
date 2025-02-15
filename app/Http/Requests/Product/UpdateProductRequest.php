@@ -25,6 +25,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        $this->mergeIfMissing(['stock' => 1]);
         return [
             'name' => 'bail|required|string|min:3|max:100',
             'subtitle' => 'bail|nullable|string|min:3|max:100',

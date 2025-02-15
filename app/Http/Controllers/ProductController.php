@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Interfaces\BrandInterface;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\ProductInterface;
 use App\Models\Product;
@@ -13,10 +14,16 @@ use Illuminate\Support\Facades\Log;
 class ProductController extends Controller
 {
     protected CategoryInterface $categoryRepository;
+    protected BrandInterface $brandRepository;
     protected ProductInterface $productRepository;
-    public function __construct(CategoryInterface $categoryRepository, ProductInterface $productRepository){
+    public function __construct(
+        CategoryInterface $categoryRepository,
+        ProductInterface $productRepository,
+        BrandInterface $brandRepository
+    ){
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
+        $this->brandRepository = $brandRepository;
     }
     /**
      * Display a listing of the resource.
@@ -40,14 +47,16 @@ class ProductController extends Controller
     {
         try {
             $categories = $this->categoryRepository->select_items();
+            $brands = $this->brandRepository->select_items();
         }
         catch (\Exception $e)
         {
             Log::error($e->getMessage());
             $categories = [];
+            $brands = [];
         }
 
-        return view('admin.product.create', compact('categories'));
+        return view('admin.product.create', compact('categories', 'brands'));
     }
 
     /**
@@ -89,7 +98,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product->load(['category', 'properties', 'galleries']);
+        $product->load(['category', 'properties']);
         return view('admin.product.show', compact('product'));
     }
 
@@ -100,14 +109,18 @@ class ProductController extends Controller
     {
         try {
             $categories = $this->categoryRepository->select_items();
+            $brands = $this->brandRepository->select_items();
         }
         catch (\Exception $e)
         {
             Log::error($e->getMessage());
             $categories = [];
+            $brands = [];
         }
 
-        return view('admin.product.edit', compact('product', 'categories'));
+
+        return view('admin.product.edit',
+            compact('product', 'categories', 'brands'));
     }
 
     /**

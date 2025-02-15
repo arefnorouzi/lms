@@ -12,6 +12,8 @@ class Brand extends Model
     /** @use HasFactory<\Database\Factories\BrandFactory> */
     use HasFactory, SoftDeletes;
 
+    public $timestamps = false;
+
     protected $guarded = [];
 
     public function products(): HasMany

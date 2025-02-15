@@ -17,4 +17,9 @@ class BrandRepository extends CrudRepository implements BrandInterface
         return $this->model->withTrashed()->orderby('id', 'desc')
             ->paginate($per_page, ['id', 'name', 'slug', 'image', 'deleted_at']);
     }
+
+    public function select_items()
+    {
+        return $this->model->get(['id', 'name']);
+    }
 }

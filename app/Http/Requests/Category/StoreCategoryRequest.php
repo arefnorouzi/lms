@@ -27,8 +27,8 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'bail|required|string|min:1|max:100|unique:brands,name',
-            'slug' => 'bail|required|string|min:1|max:100|unique:brands,slug',
+            'name' => 'bail|required|string|min:1|max:100|unique:categories,name',
+            'slug' => 'bail|required|string|min:1|max:100|unique:categories,slug',
             'meta' => 'bail|required|string|min:10|max:157',
             'home_page' => 'bail|required|bool',
             'description' => 'bail|nullable|string|min:1|max:1000',

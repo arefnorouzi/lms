@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('keywords')->nullable();
             $table->boolean('status')->default(true);
             $table->boolean('home_page')->default(true);
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

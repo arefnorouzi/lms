@@ -27,27 +27,30 @@
                     @csrf
                     {{method_field('PATCH')}}
                     <div class="row">
-                        <div class="col-md-6 mb-2">
+                        <div class="col-md-4 mb-2">
                             <label class="form-label">عنوان </label>
                             <input type="text" name="name" value="{{$product->name}}" class="form-control" required>
                             @error('name') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-6 mb-2">
+                        <div class="col-md-4 mb-2">
                             <label class="form-label">زیرعنوان </label>
                             <input type="text" name="subtitle" value="{{$product->subtitle}}" class="form-control">
                             @error('subtitle') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <label class="form-label">قیمت </label>
-                            <input type="number" name="price" value="{{$product->price}}" class="form-control"  required>
-                            @error('price') <span class="error">{{ $message }}</span> @enderror
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">انتخاب برند</label>
+                            <select name="brand_id" class="form-select">
+                                <option value="{{null}}">انتخاب برند محصول</option>
+                                @foreach($brands as $brand)
+                                    <option class="parent-category" value="{{$brand->id}}"
+                                            @if($product->brand_id == $brand->id) selected @endif>
+                                        {{$brand->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('brand_id') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
-                            <label class="form-label">موجودی </label>
-                            <input type="number" name="stock" value="{{$product->stock}}" class="form-control" required>
-                            @error('stock') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-2 mb-2">
                             <label class="form-label">دسته بندی</label>
                             <select name="category_id" class="form-select">
                                 <option value="{{null}}">انتخاب دسته محصول</option>
@@ -65,7 +68,13 @@
                             </select>
                             @error('category_id') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">قیمت </label>
+                            <input type="number" name="price" value="{{$product->price}}" class="form-control"  required>
+                            @error('price') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="col-md-2 mb-2">
                             <label class="form-label">قیمت تخفیفی (اختیاری)</label>
                             <input type="number" min="0" class="form-control" name="offer_price" value="{{$product->offer_price}}">
                             @error('offer_price') <span class="error">{{ $message }}</span> @enderror
@@ -76,7 +85,7 @@
                             @error('offer_end_date') <span class="error">{{ $message }}</span> @enderror
 
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-2 mb-2">
                             <label class="form-label">تصویر (اختیاری)</label>
                             <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" name="image">
                             @error('image') <span class="error">{{ $message }}</span> @enderror
@@ -116,7 +125,7 @@
         $(document).ready(function() {
             $('#editor').summernote({
                 tabsize: 2,
-                height: 400,
+                height: 300,
             });
         });
     </script>

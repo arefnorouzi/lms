@@ -21,32 +21,8 @@
                 <div class="col-md-7 mb-3">
                     @if($product->status)
                         <a class="btn btn-outline-dark" target="_blank" href="/shop/product/{{$product->sku}}">مشاهده محصول</a>
-
-
                     @endif
-                    <div class="card shadow mt-3 mb-5">
-                        <div class="card-header">گالری محصول</div>
-                        <div class="card-body">
-                            <div class="mb-3 row">
-                                <div class="col-md-8 mb-2">
-                                    <input id="img_input" @change="handleFileChange" type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" name="image" required>
-                                </div>
-                                <div class="col-md-4 mb-2">
-                                    <button @click="uploadImage" class="btn btn-outline-dark">آپلود</button>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="product-gallery">
-                                <div class="row">
-                                    <div v-for="(img, indx) in images" :key="indx" class="col-md-2">
-                                        <img :src="img.image" class="img-thumbnail">
-                                        <button @click="deleteImage(img.id, indx)" class="btn btn-sm btn-outline-danger">حذف</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow">
+                        <div class="card shadow mt-2">
                         <div class="card-header d-flex">
                             <h4>جزئیات محصول</h4>
                             <a href="{{route('admin.product.edit', $product->id)}}" class="btn btn-sm btn-primary me-auto">ویرایش محصول</a>
@@ -141,8 +117,8 @@
             },
             mounted(){
                 @if($product->properties)
-                this.models = <?=$product->properties ?>,
-                this.images = <?=$product->galleries ?>
+                this.models = <?=$product->properties ?>
+
                 @endif
             },
             methods:{

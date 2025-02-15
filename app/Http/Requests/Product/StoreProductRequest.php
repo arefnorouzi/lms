@@ -26,6 +26,8 @@ class StoreProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        $this->mergeIfMissing(['stock' => 1]);
+        $this->mergeIfMissing(['sales' => 1]);
         return [
             'name' => 'bail|required|string|min:3|max:100',
             'subtitle' => 'bail|nullable|string|min:3|max:100',
@@ -36,6 +38,7 @@ class StoreProductRequest extends FormRequest
             'meta' => 'bail|nullable|string|min:2|max:250',
             'description' => 'bail|nullable|string|min:10',
             'stock' => 'bail|required|integer|min:1',
+            'sales' => 'bail|required|integer|min:1',
             'offer_price' => 'bail|nullable|integer|min:1000|lt:price',
             'offer_end_date' => 'bail|nullable|date|after:today',
             'image' => 'bail|nullable|image|mimes:jpeg,png,jpg|max:2048|dimensions:min_width=300,min_height=300',
