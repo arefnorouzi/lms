@@ -14,6 +14,10 @@ class ProductRepository extends CrudRepository implements ProductInterface
         $this->model = $model;
     }
 
+    public function find_active_product(int $id)
+    {
+        return $this->model->active()->findOrFail($id);
+    }
     public function all_items(int $per_page = 10)
     {
         return $this->model->withTrashed()->orderby('id','desc')
