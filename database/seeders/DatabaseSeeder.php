@@ -45,8 +45,7 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
-            CommentSeeder::class,
-
+            //CommentSeeder::class,
 
         ]);
         $admin_role = Role::where('name', 'admin')->first();
