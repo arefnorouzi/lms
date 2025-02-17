@@ -8,6 +8,7 @@ use App\Interfaces\CategoryInterface;
 use App\Interfaces\CommentInterface;
 use App\Interfaces\OrderInterface;
 use App\Interfaces\PaymentMethodInterface;
+use App\Interfaces\PostInterface;
 use App\Interfaces\ProductInterface;
 use App\Interfaces\ProductPropertyInterface;
 use App\Interfaces\ShippingInterface;
@@ -33,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CategoryInterface::class,CategoryRepository::class);
         $this->app->bind(ProductInterface::class,ProductRepository::class);
+        $this->app->bind(PostInterface::class,ProductRepository::class);
         $this->app->bind(CartInterface::class,CartRepository::class);
         $this->app->bind(OrderInterface::class,OrderRepository::class);
         $this->app->bind(UserInterface::class,UserRepository::class);

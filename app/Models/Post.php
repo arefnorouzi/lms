@@ -13,6 +13,8 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory, SoftDeletes;
 
+    protected $guarded = [];
+
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
