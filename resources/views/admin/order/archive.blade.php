@@ -26,10 +26,15 @@
                     <h5>سفارشات اخیر</h5>
                 </div>
                 <div class="card-body">
-
+                    <form method="POST" action="{{ route('admin.orders_print') }}" id="invoiceForm">
+                        @csrf
+                        <div class="mb-2">
+                            <button class="btn btn-primary" type="submit">چاپ گروهی</button>
+                        </div>
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th><input type="checkbox" id="select-all"></th>
                             <th>#</th>
                             <th>جزئیات</th>
                             <th>مشتری</th>
@@ -43,6 +48,9 @@
                         <tbody>
                         @foreach($model as $item)
                             <tr>
+                                <td>
+                                    <input type="checkbox" name="invoice_ids[]" value="{{ $item->id }}" class="select-row">
+                                </td>
                                 <td>{{$item->id}}</td>
                                 <td>
                                     <a href="{{$base_url}}/order/{{$item->id}}"
@@ -70,6 +78,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    </form>
                 </div>
                 <div class="card-footer">
                     @if($model)
@@ -81,4 +90,12 @@
         </section>
     </div>
 
+@endsection
+@section('script')
+    <script>
+        document.getElementById('select-all').addEventListener('click', function() {
+            let checkboxes = document.querySelectorAll('.select-row');
+            checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+        });
+    </script>
 @endsection

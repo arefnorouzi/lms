@@ -73,7 +73,7 @@
                 </div>
                 <div class="card-footer">
                     @if($orders)
-                        {{$orders->links()}}
+                        {{$orders->links('vendor.pagination')}}
                     @endif
                 </div>
 

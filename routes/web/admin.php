@@ -21,6 +21,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
         'shipping' => ShippingMethodController::class,
     ]);
 
+    Route::get('/orders', [OrderController::class, 'archive'])->name('orders_archive');
+    Route::post('/print-orders', [OrderController::class, 'print_orders'])
+        ->name('orders_print');
+
     Route::post('/property', [ProductPropertyController::class, 'store'])
         ->name('product-property.store');
     Route::delete('/property/{id}', [ProductPropertyController::class, 'destroy'])

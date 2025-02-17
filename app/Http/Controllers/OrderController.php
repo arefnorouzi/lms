@@ -9,6 +9,7 @@ use App\Interfaces\ShippingInterface;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use ZanySoft\LaravelPDF\Facades\PDF;
 
 class OrderController extends Controller
 {
@@ -31,6 +32,33 @@ class OrderController extends Controller
             $model = [];
         }
         return view('admin.order.index', compact('model'));
+    }
+
+    public function archive()
+    {
+        try {
+            $model = $this->orderRepository->all_items(per_page: 20);
+        }
+        catch (\Exception $e){
+            Log::error($e->getMessage());
+            $model = [];
+        }
+        return view('admin.order.archive', compact('model'));
+    }
+
+    public function print_orders(Request $request)
+    {
+        $invoiceIds = $request->input('invoice_ids', []);
+        if (empty($invoiceIds)) {
+            return redirect()->back()->with('error', 'No invoices selected.');
+        }
+        $invoices = Order::whereIn('id', $invoiceIds)->get();
+
+        $pdf = PDF::loadView('invoices.multi', compact('invoices'), [
+            'format' => 'A6'
+        ]);
+
+        return $pdf->download('multiple_invoices.pdf');
     }
 
     /**
