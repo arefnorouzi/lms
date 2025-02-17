@@ -19,6 +19,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\CommentRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PaymentMethodRepository;
+use App\Repositories\PostRepository;
 use App\Repositories\ProductPropertyRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ShippingRepository;
@@ -34,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CategoryInterface::class,CategoryRepository::class);
         $this->app->bind(ProductInterface::class,ProductRepository::class);
-        $this->app->bind(PostInterface::class,ProductRepository::class);
+        $this->app->bind(PostInterface::class,PostRepository::class);
         $this->app->bind(CartInterface::class,CartRepository::class);
         $this->app->bind(OrderInterface::class,OrderRepository::class);
         $this->app->bind(UserInterface::class,UserRepository::class);

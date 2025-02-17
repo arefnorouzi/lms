@@ -7,8 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductPropertyController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ShippingMethodController;
+use App\Http\Controllers\PostController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'is_admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin-dashboard');
@@ -19,7 +20,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
         'order' => OrderController::class,
         'user' => UserController::class,
         'shipping' => ShippingMethodController::class,
+        'post' => PostController::class,
     ]);
+    Route::post('/upload-image', [ImageUploadController::class, 'upload'])
+        ->name('upload_image');
+
 
     Route::get('/orders', [OrderController::class, 'archive'])->name('orders_archive');
     Route::post('/print-orders', [OrderController::class, 'print_orders'])
