@@ -15,7 +15,7 @@ class Comment extends Model
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['content', 'commentable_id', 'commentable_type', 'user_id'];
+    protected $fillable = ['content', 'parent_id', 'commentable_id', 'commentable_type', 'user_id'];
 
     public function commentable(): MorphTo
     {

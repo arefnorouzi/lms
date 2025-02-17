@@ -42,11 +42,11 @@
                         <div class="rpb-shop-inf-rr">
                             <div class="rpb-itm-pric">
                                 @if($product->offer_price && $product->offer_end_date > $today)
-                                    <span class="offer-prz">{{number_format($product->offer_price)}}</span>
-                                    <span class="regular-prz">{{number_format($product->price)}}</span>
+                                    <span class="offer-prz">{{format_price($product->offer_price)}}</span>
+                                    <span class="regular-prz">{{format_price($product->price)}}</span>
                                     <small>تومان</small>
                                 @else
-                                    <span class="offer-prz">{{number_format($product->price)}}</span>
+                                    <span class="offer-prz">{{format_price($product->price)}}</span>
                                     <small>تومان</small>
                                 @endif
 

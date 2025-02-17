@@ -31,4 +31,15 @@ class ProductCommentRequest extends FormRequest
             'description' => 'bail|required|string|min:2|max:255',
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        if($this->parent_id == 0)
+        {
+            $this->parent_id = null;
+        }
+        $this->merge([
+            'parent_id' => $this->parent_id
+        ]);
+    }
 }

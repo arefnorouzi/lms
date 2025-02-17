@@ -158,17 +158,17 @@
                                                     </small>
                                                     <span>
                                                        {{verta($comment->created_at)->format('Y-m-d')}}
-                                                      <a class="reply-btn" href="#">
+                                                      <span class="reply-btn ms-1 text-info" @click="changeParentId({{$comment->id}})">
                                                         <i class="fas fa-reply">
                                                         </i>
-                                                      </a>
+                                                      </span>
                                                     </span>
                                                 </h5>
                                                 <p>{{$comment->content}}</p>
                                             </div>
                                         </div>
                                             @foreach($comment->replies as $reply)
-                                                <div class="media replied">
+                                                <div class="media replied bg-light">
                                                 <div class="user-image">
                                                     <img alt="{{$reply->user->nick_name ?? $reply->user->name}}"
                                                          class="img-fluid" src="{{$reply->user->avatar}}"/>
@@ -185,10 +185,7 @@
                                                         </small>
                                                         <span>
                                                            {{verta($reply->created_at)->format('Y-m-d')}}
-                                                          <a class="reply-btn" href="#">
-                                                            <i class="fas fa-reply">
-                                                            </i>
-                                                          </a>
+
                                                         </span>
                                                     </h5>
                                                     <p>{!! $reply->content !!}</p>
@@ -200,11 +197,11 @@
                                     @auth
                                     <div class="rpb-comment-form mb-5">
                                         <div class="form-block form-blog mt40">
-                                            <form action="#" method="post" name="#">
+
                                                 <div class="fieldsets">
                                                     <label class="form-label">پاسخ به</label>
-                                                    <select name="parent_id" class="form-control">
-                                                        <option value="{{null}}">{{$product->name}}</option>
+                                                    <select name="parent_id" v-model="comment.parent_id" class="form-control">
+                                                        <option value="0">{{$product->name}}</option>
                                                         @foreach($product->comments as $comment)
                                                             <option value="{{$comment->id}}">{{strlen($comment->content) > 70 ? substr($comment->content, 0, 70) . '...' : $comment->content}}</option>
                                                             @foreach($comment->replies as $reply)
@@ -215,17 +212,19 @@
 
                                                 </div>
                                                 <div class="fieldsets">
-                                                    <textarea name="description" minlength="2" maxlength="250" placeholder="نظر خود را بنویسید" required></textarea>
+                                                    <textarea v-model="comment.description" name="description" minlength="2" maxlength="250" placeholder="نظر خود را بنویسید" required></textarea>
                                                 </div>
                                                 <div class="fieldsets mt10">
-                                                    <button class="btn-main bg-btn3 lnk" type="submit">
+                                                    <div v-if="comment_message" class="mb-2 alert alert-success">
+                                                        <p>@{{ comment_message }}</p>
+                                                    </div>
+                                                    <p v-if="comment_error" class="mb-2 alert alert-danger">@{{ comment_error }}</p>
+                                                    <button @click="sendComment" class="btn-main bg-btn3 lnk" type="submit">
                                                         ارسال پیام
-                                                        <i class="fas fa-chevron-left fa-icon">
-                                                        </i>
+                                                        <i class="fas fa-chevron-left fa-icon"></i>
                                                         <span class="circle"></span>
                                                     </button>
                                                 </div>
-                                            </form>
                                         </div>
                                     </div>
                                     @endauth
@@ -283,17 +282,19 @@
                         <ul>
                             <li class="price">
                                 <strong>
-                                    قیمت
+                                    قیمت <small>(تومان)</small>
                                 </strong>
                                 <div class="nx-rt">
                                     <div class="rpb-itm-pric">
                                     @if($product->offer_price && $product->offer_end_date > $today)
-                                        <span class="offer-prz">{{number_format($product->offer_price)}}</span>
-                                        <span class="regular-prz">{{number_format($product->price)}}</span>
-                                        <small>تومان</small>
+                                            <span class="offer-prz">
+                                            {{format_price($product->offer_price)}}
+                                        </span>
+                                            <span class="regular-prz me-1">
+                                            {{format_price($product->price)}}
+                                        </span>
                                     @else
-                                        <span class="offer-prz">{{number_format($product->price)}}</span>
-                                        <small>تومان</small>
+                                        <span class="offer-prz">{{format_price($product->price)}}</span>
                                     @endif
                                     </div>
                                 </div>
@@ -425,10 +426,60 @@
                     qty: 1,
                     stock: 1,
                     message: '',
-                    error: ''
+                    error: '',
+                    comment: {
+                        description: '',
+                        parent_id: 0,
+                        product_id: {{$product->id}}
+                    }
                 }
             },
             methods:{
+                async changeParentId(parent_id)
+                {
+                  this.comment.parent_id = Number(parent_id)
+                },
+                async sendComment(){
+                    this.error = '';
+                    this.message = '';
+                    let token = document.head.querySelector('meta[name="csrf-token"]');
+                    if(this.qty > this.stock)
+                    {
+                        this.error = 'لطفا تعداد را به درستی وارد نمایید. تعداد درخواستی بیشتر از موجودی انبار است'
+                    }
+                    else {
+                        fetch("{{route('store_product_comment')}}", {
+                            headers: {
+                                'Content-type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            method: 'POST',
+                            body: JSON.stringify({
+                                description: this.comment.description,
+                                parent_id: this.comment.parent_id,
+                                product_id: this.comment.product_id,
+                                _token: token.content
+                            })
+                        }).then(res => {
+                            if(res.status >=200 && res.status <= 204)
+                            {
+                                this.comment.description = '';
+                                this.comment_message = 'نظر شما با موفقیت ارسال شد'
+                            }
+                            else if(res.status === 401){
+                                this.comment_error = 'لطفا وارد حساب کاربری خود شوید'
+                                window.location.replace('/register')
+                            }
+                            else {
+                                this.comment_error = 'خطایی در ارسال نظر رخ داد. لطفا دوباره تلاش نمایید'
+                            }
+                        }).catch((error) => {
+                            console.log(error);
+                            this.comment_error = 'خطایی در ارسال نظر رخ داد. لطفا دوباره تلاش نمایید'
+                        });
+                    }
+
+                },
                 async addToCart(){
                     this.error = '';
                     this.message = '';

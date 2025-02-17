@@ -23,6 +23,6 @@ class CommentRepository extends CrudRepository implements CommentInterface
 
     public function user_open_comments_count(int $user_id): int
     {
-        return $this->model->where('user_id', $user_id)->andWhere('status', false)->count();
+        return $this->model->where([['user_id', '=', $user_id],['status', '=', 0]])->count();
     }
 }

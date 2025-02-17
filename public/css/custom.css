@@ -148,3 +148,14 @@ div[class^="bg-gradient"]>h4 {
 .alert-text{
     font-size: .95rem;
 }
+
+
+.rpb-itm-pric span.regular-prz{
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #b2b2b3 !important;
+}
+
+.rpb-itm-pric span.offer-prz{
+    color: #d92f2f !important;
+}
