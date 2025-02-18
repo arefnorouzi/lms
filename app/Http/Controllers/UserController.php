@@ -26,7 +26,25 @@ class UserController extends Controller
             Log::error($e->getMessage());
             $users = null;
         }
+
         return view('admin.user.index', compact('users'));
+    }
+
+    public function search()
+    {
+        if(isset($_GET['search']))
+        {
+            $search_text = $_GET['search'];
+            try{
+                $users = $this->userRepository->search_items($search_text, 30);
+            }
+            catch(\Exception $e){
+                Log::error($e->getMessage());
+                $users = null;
+            }
+            return response()->json(data: $users);
+        }
+        return response()->json(status: 400);
     }
 
     /**

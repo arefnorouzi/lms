@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
     Route::post('/upload-image', [ImageUploadController::class, 'upload'])
         ->name('upload_image');
 
+    /* Start Seach Routes */
+    Route::get('/search-user', [UserController::class, 'search'])->name('search_users');
+
+    /* End of Seach Routes */
 
     Route::get('/orders', [OrderController::class, 'archive'])->name('orders_archive');
     Route::post('/print-orders', [OrderController::class, 'print_orders'])
@@ -34,11 +38,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
         ->name('product-property.store');
     Route::delete('/property/{id}', [ProductPropertyController::class, 'destroy'])
         ->name('product-property.destory');
-
-    Route::post('/gallery', [GalleryController::class, 'store'])
-        ->name('gallery.store');
-    Route::delete('/gallery/{gallery}', [GalleryController::class, 'destroy'])
-        ->name('gallery.destroy');
 
     Route::delete('/restore-category/{category}', [CategoryController::class, 'restore'])->withTrashed()
         ->name('restore-category');
