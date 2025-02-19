@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
 
     /* Start Seach Routes */
     Route::get('/search-user', [UserController::class, 'search'])->name('search_users');
+    Route::get('/search-product', [ProductController::class, 'search'])->name('search_products');
+    Route::get('/search-order', [OrderController::class, 'search'])->name('search_orders');
+    Route::get('/search-post', [PostController::class, 'search'])->name('search_posts');
 
     /* End of Seach Routes */
 

@@ -14,6 +14,17 @@ class ProductRepository extends CrudRepository implements ProductInterface
         $this->model = $model;
     }
 
+    public function search_items(string $search_text, int $per_page = 10)
+    {
+        return $this->model->withTrashed()
+            ->where('name', 'like', '%' . $search_text . '%')
+            ->orWhere('sku', 'like', '%' . $search_text . '%')
+            ->orderby('id', 'desc')->paginate($per_page, [
+                'id', 'name', 'sku', 'stock', 'price', 'offer_price', 'status', 'sales',
+                'offer_end_date', 'thumbnail', 'deleted_at'
+            ]);
+    }
+
     public function find_active_product(int $id)
     {
         return $this->model->active()->findOrFail($id);

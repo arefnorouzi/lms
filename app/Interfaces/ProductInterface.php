@@ -15,4 +15,6 @@ interface ProductInterface extends CrudInterface
     public function find_for_add_to_cart(int $product_id);
 
     public function related_products(int $category_id, int $product_id);
+
+    public function search_items(string $search_text, int $per_page);
 }

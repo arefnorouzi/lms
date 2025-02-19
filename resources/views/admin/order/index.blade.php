@@ -21,12 +21,20 @@
                 </div>
             @endif
 
-            <div class="card shadow">
+            <div class="card shadow" id="vueapp">
                 <div class="card-header">
                     <h5>سفارشات اخیر</h5>
                 </div>
                 <div class="card-body">
-
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="جستجو..."
+                               @keyup.enter="search" v-model="search_text"
+                               style="max-width: 300px; float: right; margin-left: .5rem">
+                        <button class="btn btn-md btn-outline-primary" @click="search">
+                            جستجو
+                        </button>
+                    </div>
+                    <hr />
                     <table class="table table-bordered">
                         <thead>
                         <tr>
@@ -35,39 +43,30 @@
                             <th>مشتری</th>
                             <th>وضعیت</th>
                             <th>مبلغ</th>
-                            <th>ارسال</th>
                             <th>مبلغ نهایی</th>
                             <th>بروزرسانی</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($model as $item)
-                            <tr>
-                                <td>{{$item->id}}</td>
+                            <tr v-for="(item, index) in models" :key="index">
+                                <td>@{{item.id}}</td>
                                 <td>
-                                    <a href="{{$base_url}}/order/{{$item->id}}"
+                                    <a :href="`{{$base_url}}/order/${item.id}`"
                                        target="_blank"
                                        class="btn btn-primary btn-sm">مشاهده</a>
                                 </td>
-                                <td>{{$item->user->name}}</td>
+                                <td>@{{item?.user?.name}}</td>
                                 <td>
-                                    @if(in_array($item->status, array(\App\Enums\OrderStatuses::PAID->value, \App\Enums\OrderStatuses::SHIPPED->value)))
-                                        <span class="text-success">{{$item->status}}</span>
-                                    @elseif(in_array($item->status, array(\App\Enums\OrderStatuses::PROCESSING->value, \App\Enums\OrderStatuses::PENDING->value)))
-                                        <span class="text-danger">{{$item->status}}</span>
-                                    @else
-                                        <span class="text-dark">{{$item->status}}</span>
-                                    @endif
+                                    <span v-if="item.status === 'پرداخت نشده' || item.status === 'درحال پردازش'"
+                                          class="text-danger">@{{ item.status }}</span>
+                                    <span v-else class="text-success">@{{ item.status }}</span>
                                 </td>
-                                <td>{{number_format($item->total)}}</td>
-                                <td>{{number_format($item->shipping_cost)}}</td>
-                                <td>{{number_format($item->amount)}}</td>
-                                <td class="td-date">{{verta($item->updated_at)}}</td>
-
+                                <td>@{{item.total.toLocaleString()}}</td>
+                                <td>@{{item.shipping_cost.toLocaleString()}}</td>
+                                <td>@{{item.amount.toLocaleString()}}</td>
+                                <td class="td-date">@{{gregorianToJalali(item.updated_at)}}</td>
                             </tr>
 
-
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -81,4 +80,129 @@
         </section>
     </div>
 
+@endsection
+@section('script')
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    models: [],
+                    message: '',
+                    error: '',
+                    search_text: ''
+                }
+            },
+            mounted(){
+                @if(isset($model))
+                    this.models = <?=json_encode($model->items())?>
+                    @endif
+            },
+            methods:{
+                gregorianToJalali(date){
+                    let formatted_date = new Date(date)
+                    return new Intl.DateTimeFormat('fa-IR-u-ca-persian', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric'
+                    }).format(formatted_date);
+                },
+                async search(){
+                    this.error = '';
+                    this.message = '';
+                    fetch("{{$base_url}}/search-order?search=" + this.search_text, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        method: 'GET'
+                    }).then(res => {
+                        if(res.status >=200 && res.status <= 204)
+                        {
+                            return res.json()
+                        }
+                        else if(res.status === 401){
+                            this.error = 'لطفا وارد حساب کاربری خود شوید'
+                            window.location.replace('/register')
+                        }
+                        else {
+                            this.error = 'خطایی در دریافت رکوردها رخ داد. لطفا دوباره تلاش نمایید'
+                        }
+                    }).then(data => {
+                        this.models = data.data
+                    })
+                        .catch((error) => {
+                            console.log(error);
+                            this.error = 'خطایی در دریافت رکوردها رخ داد. لطفا دوباره تلاش نمایید'
+                        });
+                },
+                async restoreItem(id, index){
+                    this.error = '';
+                    this.message = '';
+                    let token = document.head.querySelector('meta[name="csrf-token"]');
+                    fetch("{{$base_url}}/restore-order/" + id, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        method: 'DELETE',
+                        body: JSON.stringify({
+                            _token: token.content
+                        })
+                    }).then(res => {
+                        if(res.status >=200 && res.status <= 204)
+                        {
+                            this.message = 'رکورد با موفقیت بازیابی شد';
+                            this.models[index].deleted_at = null
+                        }
+                        else if(res.status === 401){
+                            this.error = 'لطفا وارد حساب کاربری خود شوید'
+                            window.location.replace('/register')
+                        }
+                        else {
+                            this.error = 'خطایی در بازیابی رکورد رخ داد. لطفا دوباره تلاش نمایید'
+                        }
+                    }).catch((error) => {
+                        console.log(error);
+                        this.error = 'خطایی در بازیابی رکورد رخ داد. لطفا دوباره تلاش نمایید'
+                    });
+
+                },
+                async deleteitem(id, index){
+                    this.error = '';
+                    this.message = '';
+                    let token = document.head.querySelector('meta[name="csrf-token"]');
+                    fetch("{{$base_url}}/order/" + id, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        method: 'DELETE',
+                        body: JSON.stringify({
+                            _token: token.content
+                        })
+                    }).then(res => {
+                        if(res.status >=200 && res.status <= 204)
+                        {
+                            this.message = 'رکورد با موفقیت حذف شد';
+                            this.models[index].deleted_at = true
+                        }
+                        else if(res.status === 401){
+                            this.error = 'لطفا وارد حساب کاربری خود شوید'
+                            window.location.replace('/register')
+                        }
+                        else {
+                            this.error = 'خطایی در حذف رکورد رخ داد. لطفا دوباره تلاش نمایید'
+                        }
+                    }).catch((error) => {
+                        console.log(error);
+                        this.error = 'خطایی در حذف رکورد رخ داد. لطفا دوباره تلاش نمایید'
+                    });
+
+                }
+            }
+        }).mount('#vueapp')
+    </script>
 @endsection

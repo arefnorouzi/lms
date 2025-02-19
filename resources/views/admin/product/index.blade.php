@@ -30,6 +30,15 @@
                     <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-primary me-auto">افزودن محصول</a>
                 </div>
                 <div class="card-body">
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="جستجو..."
+                               @keyup.enter="search" v-model="search_text"
+                               style="max-width: 300px; float: right; margin-left: .5rem">
+                        <button class="btn btn-md btn-outline-primary" @click="search" style="float: right">
+                            جستجو
+                        </button>
+                    </div>
+                    <hr />
                         <div style="min-height: 70px;">
                             <div v-if="message" class="alert alert-success">
                                 @{{ message }}
@@ -109,6 +118,7 @@
                     models: [],
                     message: '',
                     error: '',
+                    search_text: '',
                     today: "{{today()->format('Y-m-d')}}"
                 }
             },
@@ -118,6 +128,35 @@
                     @endif
             },
             methods:{
+                async search(){
+                    this.error = '';
+                    this.message = '';
+                    fetch("{{$base_url}}/search-product?search=" + this.search_text, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        method: 'GET'
+                    }).then(res => {
+                        if(res.status >=200 && res.status <= 204)
+                        {
+                            return res.json()
+                        }
+                        else if(res.status === 401){
+                            this.error = 'لطفا وارد حساب کاربری خود شوید'
+                            window.location.replace('/register')
+                        }
+                        else {
+                            this.error = 'خطایی در دریافت رکوردها رخ داد. لطفا دوباره تلاش نمایید'
+                        }
+                    }).then(data => {
+                        this.models = data.data
+                    })
+                        .catch((error) => {
+                            console.log(error);
+                            this.error = 'خطایی در دریافت رکوردها رخ داد. لطفا دوباره تلاش نمایید'
+                        });
+                },
                 async restoreItem(id, index){
                     this.error = '';
                     this.message = '';

@@ -34,6 +34,23 @@ class PostController extends Controller
         return view('admin.post.index', compact('model'));
     }
 
+    public function search()
+    {
+        if(isset($_GET['search']))
+        {
+            $search_text = $_GET['search'];
+            try{
+                $model = $this->postRepository->search_items($search_text, 30);
+            }
+            catch(\Exception $e){
+                Log::error($e->getMessage());
+                return response()->json(status: 400);
+            }
+            return response()->json(data: $model);
+        }
+        return response()->json(status: 400);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

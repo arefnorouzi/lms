@@ -16,7 +16,18 @@ class OrderRepository extends CrudRepository implements OrderInterface
     {
         return $this->model->withTrashed()->orderby('id', 'desc')
             ->with(['user:id,name,mobile'])->paginate($per_page,[
-                'id', 'amount', 'status', 'total', 'shipping_cost', 'user_id', 'updated_at',
+                'id', 'amount', 'status', 'total', 'user_id', 'updated_at',
+            ]);
+    }
+
+    public function search_items(string $search_text, int $per_page = 10)
+    {
+        return $this->model->withTrashed()
+            ->where('customer_name', 'like', '%' . $search_text . '%')
+            ->orWhere('customer_phone', 'like', '%' . $search_text . '%')
+            ->orderby('id', 'desc')
+            ->with(['user:id,name,mobile'])->paginate($per_page,[
+                'id', 'amount', 'status', 'total', 'user_id', 'updated_at',
             ]);
     }
 
