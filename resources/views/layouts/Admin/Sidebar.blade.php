@@ -52,6 +52,23 @@
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link has-dropdown collapsed"
+               data-bs-toggle="collapse" data-bs-target="#posts"
+               aria-expanded="false" aria-controls="posts">
+                <i class="lni lni-box-archive-1"></i>
+                <span>مقالات</span>
+            </a>
+            <ul id="brand" class="sidebar-dropdown list-unstyled collapse"
+                data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a href="{{$base_url}}/post/create" class="sidebar-link">افزودن مقاله</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{$base_url}}/post" class="sidebar-link">مدیریت مقالات</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link has-dropdown collapsed"
                data-bs-toggle="collapse" data-bs-target="#product"
                aria-expanded="false" aria-controls="product">
                 <i class="lni lni-box-archive-1"></i>

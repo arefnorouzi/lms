@@ -18,7 +18,7 @@ class PostRepository extends CrudRepository implements PostInterface
         return $this->model->withTrashed()->orderby('id', 'desc')
             ->with(['user:id,name'])
             ->paginate($per_page, [
-            'id', 'name', 'slug', 'sku', 'status', 'user_id', 'image',
+            'id', 'name', 'slug', 'sku', 'status', 'user_id', 'image', 'views',
                 'published_at', 'updated_at', 'deleted_at'
         ]);
     }
@@ -28,8 +28,9 @@ class PostRepository extends CrudRepository implements PostInterface
         return $this->model->withTrashed()
             ->where('name', 'like', '%' . $search_text . '%')
             ->orWhere('sku', 'like', '%' . $search_text . '%')
+            ->with(['user:id,name'])
             ->orderby('id', 'desc')->paginate($per_page, [
-                'id', 'name', 'slug', 'sku', 'status', 'user_id', 'image',
+                'id', 'name', 'slug', 'sku', 'status', 'user_id', 'image', 'views',
                 'published_at', 'updated_at', 'deleted_at'
             ]);
     }

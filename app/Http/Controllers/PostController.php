@@ -123,7 +123,7 @@ class PostController extends Controller
             Log::error($e->getMessage());
             $categories = [];
         }
-        return view('admin.post.create', compact('post', 'categories'));
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -151,7 +151,7 @@ class PostController extends Controller
             }
 
             session()->flash('message', 'رکورد با موفقیت بروزرسانی شد');
-            return redirect()->route('admin.product.show', $post->id);
+            return redirect()->route('admin.post.show', $post->id);
         }
         catch (\Exception $e)
         {

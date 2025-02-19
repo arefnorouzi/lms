@@ -34,7 +34,7 @@
                         <input type="text" class="form-control" placeholder="جستجو..."
                                @keyup.enter="search" v-model="search_text"
                                style="max-width: 300px; float: right; margin-left: .5rem">
-                        <button class="btn btn-md btn-outline-primary" @click="search" style="float: right">
+                        <button class="btn btn-md btn-outline-primary" @click="search">
                             جستجو
                         </button>
                     </div>

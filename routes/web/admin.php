@@ -48,6 +48,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
     Route::delete('/restore-product/{product}', [ProductController::class, 'restore'])->withTrashed()
         ->name('restore-product');
 
+    Route::delete('/restore-post/{post}', [PostController::class, 'restore'])->withTrashed()
+        ->name('restore-post');
+
     Route::delete('/restore-user/{user}', [UserController::class, 'restore'])->withTrashed()
         ->name('restore-user');
     Route::delete('/restore-brand/{brand}', [BrandController::class, 'restore'])->withTrashed()
