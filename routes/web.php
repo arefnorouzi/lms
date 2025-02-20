@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/web/dashboard.php';
+require __DIR__.'/web/blog.php';
 require __DIR__.'/web/shop.php';
 require __DIR__.'/web/cart.php';
 require __DIR__.'/web/order.php';

@@ -23,7 +23,7 @@
 
             </div>
             <div class="card-body">
-                <form action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.post.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-4 mb-2">
@@ -69,7 +69,7 @@
                         <div class="col-md-12 mb-2">
                             <div class="col-lg-12">
                                 <label class="form-label">توضیحات کامل</label>
-                                <textarea id="editor" rows="5" name="description" class="form-control"></textarea>
+                                <textarea id="editor" rows="5" name="description" class="form-control">{!! old('description') !!}</textarea>
                                 @error('description') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>

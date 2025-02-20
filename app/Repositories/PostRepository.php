@@ -35,4 +35,34 @@ class PostRepository extends CrudRepository implements PostInterface
             ]);
     }
 
+    public function recent_posts(int $per_page = 12)
+    {
+        return $this->model->active()->orderby('id','desc')
+            ->with(['category:id,name,slug', 'user:id,name,nick_name'])->paginate($per_page, [
+                'id', 'name', 'sku', 'viws', 'thumbnail', 'image', 'subtitle', 'category_id', 'user_id'
+            ]);
+    }
+
+    public function find_by_sku(string $sku)
+    {
+        return $this->model->active()->where('sku', '=', $sku)->firstOrFail();
+    }
+
+    public function categories_posts(int $per_page = 12, array $categories = [])
+    {
+        return $this->model->active()->whereIn('category_id', $categories)
+            ->with(['category:id,name,slug', 'user:id,name,nick_name'])
+            ->orderBy('id','desc')->paginate($per_page, [
+                'id', 'name', 'sku', 'viws', 'thumbnail', 'image', 'subtitle', 'category_id', 'user_id'
+            ]);
+    }
+
+    public function related_posts(int $category_id, int $post_id)
+    {
+        return $this->model->active()->where([['category_id', '=', $category_id], ['id', '!=', $post_id]])
+            ->with(['category:id,name,slug', 'user:id,name,nick_name'])
+            ->orderBy('id','desc')->take(4)->get([
+                'id', 'name', 'sku', 'viws', 'thumbnail', 'image', 'subtitle', 'category_id', 'user_id'
+            ]);
+    }
 }
