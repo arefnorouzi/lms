@@ -8,6 +8,7 @@ use App\Interfaces\BrandInterface;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\ProductInterface;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -55,6 +56,22 @@ class ProductController extends Controller
             return response()->json(data: $model);
         }
         return response()->json(status: 400);
+    }
+
+    public function add_sales(Product $product): object
+    {
+        $product->sales += 1;
+        $product->update();
+        return response()->json(status: 201);
+    }
+
+    public function add_rate(Product $product): object
+    {
+        $product->ratings()->create([
+            'rating' => rand(4, 5),
+            'user_id' => User::factory()->create()->id
+        ]);
+        return response()->json(status: 201);
     }
 
     /**

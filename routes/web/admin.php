@@ -25,6 +25,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
     Route::post('/upload-image', [ImageUploadController::class, 'upload'])
         ->name('upload_image');
 
+    Route::post('/product-sales/{product}', [ProductController::class, 'add_sales'])
+        ->name('product_add_sales');
+
+    Route::post('/product-rates/{product}', [ProductController::class, 'add_rate'])
+        ->name('product_add_rate');
+
     /* Start Seach Routes */
     Route::get('/search-user', [UserController::class, 'search'])->name('search_users');
     Route::get('/search-product', [ProductController::class, 'search'])->name('search_products');

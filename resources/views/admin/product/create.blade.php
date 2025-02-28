@@ -26,16 +26,22 @@
                 <form action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">عنوان </label>
                             <input type="text" name="name" value="{{old('name')}}" class="form-control" required>
                             @error('name') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">زیرعنوان </label>
                             <input type="text" name="subtitle" value="{{old('subtitle')}}" class="form-control">
                             @error('subtitle') <span class="error">{{ $message }}</span> @enderror
                         </div>
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">تعداد جلسات </label>
+                            <input type="number" name="sessions" value="{{old('sessions')}}" class="form-control"  required>
+                            @error('sessions') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+
                         <div class="col-md-2 mb-2">
                             <label class="form-label">انتخاب برند</label>
                             <select name="brand_id" class="form-select">
@@ -82,7 +88,17 @@
                             @error('offer_end_date') <span class="error">{{ $message }}</span> @enderror
 
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">زمان دوره</label>
+                            <input type="text" minlength="2" class="form-control" name="course_time" value="{{old('course_time')}}">
+                            @error('course_time') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">دمو دوره</label>
+                            <input type="text" minlength="2" class="form-control" name="course_demo" value="{{old('course_demo')}}">
+                            @error('course_demo') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-md-2 mb-2">
                             <label class="form-label">تصویر (اختیاری)</label>
                             <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" name="image" value="{{old('image')}}">
                             @error('image') <span class="error">{{ $message }}</span> @enderror

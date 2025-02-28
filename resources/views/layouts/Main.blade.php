@@ -21,6 +21,7 @@
     <link href="/css/custom.css" rel="stylesheet"/>
     <!--===== Custom Font css =====-->
     <link href="/css/custom-fonts.css" rel="stylesheet"/>
+    @yield('header')
 </head>
 <body>
 <!--Start Header -->

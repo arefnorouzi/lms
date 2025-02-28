@@ -29,37 +29,40 @@
           "@context": "https://schema.org/",
           "@type": "Product",
           "sku": "{{$product->sku}}",
-      "image": [
-        "{{url($product->image)}}"
-      ],
-      "name": "{{$product->name}}",
-      "description": "{{$product->meta}}",
-      "brand": {
-        "@type": "Brand",
-        "name": "CLEANOVA"
-      },
-        @if($product->offer_price && $product->offer_end_date > $today)
+          "image": "{{url($product->image)}}",
+          "name": "{{$product->name}}",
+          "description": "{{$product->meta}}",
+          "brand": {
+            "@type": "Brand",
+            "name": "CASPIWEB"
+          },
+            @if($product->offer_price && $product->offer_end_date > $today)
             "offers": {
                 "@type": "Offer",
                 "url": "{{url("/shop/product/$product->sku")}}",
-            "priceCurrency": "IRR",
-            "price": "{{intval($product->price * 10)}}",
-            "priceValidUntil": "{{$product->offer_end_time}}",
-            "itemCondition": "https://schema.org/UsedCondition",
-            "availability": "https://schema.org/InStock"
-        }
-        @else
-
+                "priceCurrency": "IRR",
+                "price": "{{intval($product->price * 10)}}",
+                "priceValidUntil": "{{$product->offer_end_time}}",
+                "itemCondition": "https://schema.org/UsedCondition",
+                "availability": "https://schema.org/InStock"
+            }
+            @else
             "offers": {
-              "@type": "Offer",
-              "url": "{{url("/shop/product/$product->sku")}}",
-            "priceCurrency": "IRR",
-            "price": "{{intval($product->price * 10)}}",
-            "priceValidUntil": "{{now()->addDays(10)}}",
-            "itemCondition": "https://schema.org/UsedCondition",
-            "availability": "https://schema.org/InStock"
-        }
-        @endif
+                "@type": "Offer",
+                "url": "{{url("/shop/product/$product->sku")}}",
+                "priceCurrency": "IRR",
+                "price": "{{intval($product->price * 10)}}",
+                "priceValidUntil": "{{now()->addDays(10)}}",
+                "itemCondition": "https://schema.org/UsedCondition",
+                "availability": "https://schema.org/InStock"
+            }
+            @endif
+            ,
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{round($product->averageRating(), 2)}}",
+            "ratingCount": "{{$product->ratings()->count()}}"
+          }
         }
     </script>
 @endsection

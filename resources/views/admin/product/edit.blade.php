@@ -27,15 +27,20 @@
                     @csrf
                     {{method_field('PATCH')}}
                     <div class="row">
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">عنوان </label>
                             <input type="text" name="name" value="{{$product->name}}" class="form-control" required>
                             @error('name') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">زیرعنوان </label>
                             <input type="text" name="subtitle" value="{{$product->subtitle}}" class="form-control">
                             @error('subtitle') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">تعداد جلسات </label>
+                            <input type="number" name="sessions" value="{{$product->sessions}}" class="form-control"  required>
+                            @error('sessions') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         <div class="col-md-2 mb-2">
                             <label class="form-label">انتخاب برند</label>
@@ -79,11 +84,21 @@
                             <input type="number" min="0" class="form-control" name="offer_price" value="{{$product->offer_price}}">
                             @error('offer_price') <span class="error">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-2 mb-2">
                             <label class="form-label">انقضای قیمت تخفیف (اختیاری)</label>
                             <input type="date" id="offer_date" class="form-control" name="offer_end_date" value="{{$product->offer_end_date}}">
                             @error('offer_end_date') <span class="error">{{ $message }}</span> @enderror
 
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">زمان دوره</label>
+                            <input type="text" minlength="2" class="form-control" name="course_time" value="{{$product->course_time}}">
+                            @error('course_time') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <label class="form-label">دمو دوره</label>
+                            <input type="text" minlength="2" class="form-control" name="course_demo" value="{{$product->course_demo}}">
+                            @error('course_demo') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         <div class="col-md-2 mb-2">
                             <label class="form-label">تصویر (اختیاری)</label>
