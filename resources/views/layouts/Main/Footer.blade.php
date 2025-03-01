@@ -24,17 +24,12 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-3 col-sm-6 ftr-brand-pp">
-                <a class="navbar-brand mt30 mb25 f-dark-logo" href="#">
-                    <img alt="لوگو" src="/images/logo.png"/>
+                <a class="navbar-brand mt30 mb25 f-dark-logo" href="/">
+                    مارلیک افزار
                 </a>
-                <a class="navbar-brand mt30 mb25 f-white-logo" href="#">
-                    <img alt="لوگو" src="/images/white-logo.png"/>
-                </a>
-                <p>
-                    خبرنامه بسیار مهم است و توسط مشتری دنبال می شود. پست الکترونیک خود را وارد کنید
-                </p>
-                <a class="btn-main bg-btn3 lnk mt20" href="#">
-                    مشترک شوید
+                <p>با مارلیک افزار به سادگی آب خوردن، برنامه نویسی یاد بگیرید</p>
+                <a class="btn-main bg-btn3 lnk mt20" href="/register">
+                    ثبت نام
                     <i class="fas fa-chevron-left fa-icon">
                     </i>
                     <span class="circle">
@@ -54,9 +49,7 @@
                         <p>
                             پست الکترونیک
                             <span>
-                      <a href="mailto:info@site.ir">
-                        info@site.ir
-                      </a>
+                      <span>info[at]caspiweb.ir</span>
                     </span>
                         </p>
                     </li>
@@ -68,8 +61,8 @@
                         <p>
                             تلفن
                             <span>
-                      <a href="tel:09111234567">
-                        09111234567
+                      <a href="tel:09192138510">
+                        09192138510
                       </a>
                     </span>
                         </p>
@@ -81,8 +74,7 @@
                   </span>
                         <p>
                             آدرس
-                            <span>
-                       مشهد ، خیابان پاسداران ، ساختمان 72 ، پلاک 17
+                            <span>گیلان، رشت
                     </span>
                         </p>
                     </li>
@@ -90,170 +82,55 @@
             </div>
             <div class="col-lg-2 col-sm-6">
                 <h5>
-                    شرکت
+                    صفحات
                 </h5>
                 <ul class="footer-address-list link-hover">
                     <li>
-                        <a href="get-quote.html">
-                            تماس با ما
-                        </a>
+                        <a href="/shop">دوره های آموزشی</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            سوالات متداول مشتری
-                        </a>
+                        <a href="/blog">وبلاگ</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            سیاست بازپرداخت
-                        </a>
+                        <a href="/contact">تماس با ما</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            حریم خصوصی
-                        </a>
+                        <a href="/terms">قوانین</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            شرایط و ضوابط
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            مجوز و حق چاپ
-                        </a>
+                        <a href="/privacy">حریم خصوصی</a>
                     </li>
                 </ul>
             </div>
             <div class="col-lg-4 col-sm-6 footer-blog-">
-                <h5>
-                    آخرین مطالب
-                </h5>
+                <h5>نماد اعتماد</h5>
                 <div class="single-blog-">
-                    <div class="post-thumb">
-                        <a href="#">
-                            <img alt=" وبلاگ " src="/images/blog/blog-small.jpg"/>
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p class="post-meta">
-                    <span class="post-date">
-                      <i class="far fa-clock">
-                      </i>
-                       فروردین 1399
-                    </span>
-                        </p>
-                        <h4 class="title">
-                            <a href="blog-sngle.html">
-                                ما بهترین و خلاقانه ترین خدمات مشاوره را به شما ارائه می دهیم
-                            </a>
-                        </h4>
-                    </div>
-                </div>
-                <div class="single-blog-">
-                    <div class="post-thumb">
-                        <a href="#">
-                            <img alt=" وبلاگ " src="/images/blog/blog-small.jpg"/>
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p class="post-meta">
-                    <span class="post-date">
-                      <i class="far fa-clock">
-                      </i>
-                       فروردین 1399
-                    </span>
-                        </p>
-                        <h4 class="title">
-                            <a href="blog-sngle.html">
-                                ما بهترین و خلاقانه ترین خدمات مشاوره را به شما ارائه می دهیم
-                            </a>
-                        </h4>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="footer-brands">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 v-center">
-                <h5 class="mb10">
-                    برترین شرکت های توسعه اپلیکیشن
-                </h5>
-                <p>
-                    خبرنامه بسیار مهم است و توسط مشتری دنبال می شود. پست الکترونیک خود را وارد کنید
-                </p>
-            </div>
-            <div class="col-lg-8 v-center">
-                <ul class="footer-badges-">
-                    <li>
-                        <a href="#">
-                            <img alt="نشان ها" src="/images/about/badges-a.png"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img alt="نشان ها" src="/images/about/badges-b.png"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img alt="نشان ها" src="/images/about/badges-c.png"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img alt="نشان ها" src="/images/about/badges-d.png"/>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="footer-row3">
     <div class="copyright">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-social-media-icons">
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-facebook">
-                            </i>
+
+                        <a href="http://instagram.com/caspiweb_ir" target="blank">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-twitter">
-                            </i>
+                        <a href="http://youtube.com/@caspiweb_ir" target="blank">
+                            <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-instagram">
-                            </i>
+
+                        <a href="https://t.me/caspiweb_ir" target="blank">
+                            <i class="fab fa-telegram"></i>
                         </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-linkedin">
-                            </i>
-                        </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-youtube">
-                            </i>
-                        </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-pinterest-p">
-                            </i>
-                        </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-vimeo-v">
-                            </i>
-                        </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-dribbble">
-                            </i>
-                        </a>
-                        <a href="javascript:void(0)" target="blank">
-                            <i class="fab fa-behance">
-                            </i>
+                        <a href="https://wa.me/+989192138510" target="blank">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                     <div class="footer-">
