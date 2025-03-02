@@ -112,6 +112,30 @@
                         <img alt="{{$product->subtitle ?? $product->name}}" class="w-100" src="{{$product->image}}"/>
                     </div>
                     <div class="rpb-item-info">
+                        <h4 class="courses-title mb-2">سرفصل‌های دوره</h4>
+
+
+                        <div class="accordion" id="accordionExample">
+                            @foreach($product->courses as $course)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading-{{$course->id}}">
+                                        <button aria-controls="collapseOne" aria-expanded="true" class="accordion-button" data-bs-target="#collapse-{{$course->id}}" data-bs-toggle="collapse" type="button">
+                                            {{$course->name}}
+                                        </button>
+                                    </h2>
+                                    <div aria-labelledby="heading-{{$course->id}}" class="accordion-collapse collapse " data-bs-parent="#accordionExample" id="collapse-{{$course->id}}">
+                                        <div class="accordion-body">
+                                            <div class="data-reqs course-content">
+                                                {!! $course->description !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+
+                    </div>
+                    <div class="rpb-item-info mt-5">
                         <div class="tab-17 tabs-layout">
                             <ul class="nav nav-tabs" id="myTab3" role="tablist">
                                 <li class="nav-item">

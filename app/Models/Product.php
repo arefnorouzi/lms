@@ -61,4 +61,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductProperty::class);
     }
+
+    public function courses(): HasMany
+    {
+        return $this->hasMany(Course::class);
+    }
 }

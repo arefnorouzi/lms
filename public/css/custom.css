@@ -159,3 +159,29 @@ div[class^="bg-gradient"]>h4 {
 .rpb-itm-pric span.offer-prz{
     color: #d92f2f !important;
 }
+
+.course-content ul{margin: 1.5rem .5rem}
+.course-content ul li{
+    margin-bottom: 1.3rem;
+    position: relative;
+    list-style-type: none;
+    padding-right: 2rem;
+}
+
+.course-content ul li::before {
+    content: "✦"; /* Custom bullet (you can use Unicode characters like ◉, ✔, ✦) */
+    color: #d92f2f; /* Bullet color */
+    font-size: 1.2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.course-content ul li:has(a)::before {
+    content: "🔗"; /* Custom bullet (you can use Unicode characters like ◉, ✔, ✦) */
+    color: #d92f2f; /* Bullet color */
+    font-size: 1.2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}

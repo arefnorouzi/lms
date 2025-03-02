@@ -63,7 +63,7 @@ class ShopController extends Controller
         {
             return redirect('/shop');
         }
-        $product->load(['category:id,name,slug', 'properties']);
+        $product->load(['category:id,name,slug', 'properties', 'courses']);
         $product->load(['comments' => function ($query) {
             $query->orderby('id', 'desc')->where('status', 1)
                 ->whereNull('parent_id')->with('replies')
