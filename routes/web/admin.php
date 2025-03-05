@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ShippingMethodController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CourseController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'is_admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin-dashboard');
@@ -21,6 +22,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'i
         'user' => UserController::class,
         'shipping' => ShippingMethodController::class,
         'post' => PostController::class,
+        'course' => CourseController::class,
     ]);
     Route::post('/upload-image', [ImageUploadController::class, 'upload'])
         ->name('upload_image');

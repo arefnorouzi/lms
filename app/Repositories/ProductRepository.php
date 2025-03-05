@@ -98,4 +98,9 @@ class ProductRepository extends CrudRepository implements ProductInterface
                 'sku', 'stock', 'offer_price', 'offer_end_date', 'sessions', 'course_time'
             ]);
     }
+
+    public function select_items()
+    {
+        return $this->model->get(['id', 'name']);
+    }
 }
